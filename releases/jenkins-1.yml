@@ -1,0 +1,34 @@
+---
+packages:
+- name: jenkins
+  version: 1
+  sha1: !binary |-
+    MDUwNzA5ZDExZjI1OWUwNGFhY2I5OGVkMzc5NGMyZjZmYTBiMzJmNg==
+  fingerprint: !binary |-
+    MDYyYTM1MWI5NGJhYjRjN2RjNmE4NzM4YjczZmFmZWY4ZjI2YjFjMA==
+  dependencies: []
+- name: jre
+  version: 1
+  sha1: !binary |-
+    ZTc2NTY5YTNmNTNhNzAyOTAzYTVjYjU5NTVhMTE1MzA0MTlkYmU1OQ==
+  fingerprint: !binary |-
+    MWZhZTg2MjRmNjRjMjcyZGM3MzQ5ODZmOTU5NDVjMDk3MmU0MjZlMw==
+  dependencies: []
+- name: nginx
+  version: 1
+  sha1: !binary |-
+    MTBiMWVhZWQ1YjUwNTI2MDYzM2E3YzNiMzg2NDJiYWQ1ZDQ0ZjI1NQ==
+  fingerprint: !binary |-
+    MjZkODg1ZTYzMTg1NDgzZGQ3MDg1OWJlZDVhMGYxNDIzMmYyM2UxOA==
+  dependencies: []
+jobs:
+- name: jenkins_master
+  version: 1
+  fingerprint: !binary |-
+    MjA2NzkyNWE2MTEzN2Y3N2M3MjZhM2VjM2EyMGJjNWYxMzA5MTgyMQ==
+  sha1: !binary |-
+    YThmYjhlYzM1NDZjMmM3YmQzNDhmZDkzZTAzMzRkNGQ0YTNiOTExOA==
+commit_hash: ad73b707
+uncommitted_changes: true
+name: jenkins
+version: 1

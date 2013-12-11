@@ -1,0 +1,6 @@
+---
+name: configure_jenkins
+dependencies:
+  - ruby
+files:
+- configure_jenkins/**/*

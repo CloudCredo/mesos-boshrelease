@@ -1,0 +1,31 @@
+---
+name: jenkins_master
+packages:
+- jenkins
+- jre
+- nginx
+- git
+- ruby
+- configure_jenkins
+templates:
+  bin/jenkins_master_ctl: bin/jenkins_master_ctl
+  bin/configure_jenkins_ctl: bin/configure_jenkins_ctl
+  bin/monit_debugger: bin/monit_debugger
+  bin/nginx_ctl: bin/nginx_ctl
+  bin/install_dependencies_ctl: bin/install_dependencies_ctl
+  bin/install_dependencies.sh: bin/install_dependencies.sh
+  data/properties.sh.erb: data/properties.sh
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  config/nginx.conf.erb: config/nginx.conf
+  config/mime.types: config/mime.types
+  config/config.xml: config/config.xml
+properties:
+  jenkins.admin.password:
+    description: Admin user password
+  jenkins.server.internal_http_port:
+    description: "Internal http port between nginx & jenkins"
+    default: 8088
+  jenkins.server.ajp13_port:
+    description: AJP13 protocal port
+    default: 8009

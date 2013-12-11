@@ -1,0 +1,76 @@
+---
+name: jenkins
+director_uuid: a725732d-dbc3-40c9-949c-e9c31d1717e0 
+
+releases:
+- name: jenkins
+  version: latest
+
+compilation:
+  workers: 2
+  network: jenkins-network
+  reuse_compilation_vms: true
+  cloud_properties:
+    name: random
+
+update:
+  canaries: 1
+  canary_watch_time: 30000-240000
+  update_watch_time: 30000-600000
+  max_in_flight: 3
+
+resource_pools:
+- name: jenkins-common
+  network: jenkins-network
+  size: 1
+  stemcell:
+    name: bosh-stemcell
+    version: latest
+  cloud_properties:
+    name: random
+
+networks:
+- name: jenkins-network
+  subnets:
+<% (0..28).each_with_index do |i| %>
+  - range: 10.244.1.<%= i*4 %>/30
+    reserved:
+      - 10.244.1.<%= i*4 + 1 %>
+    static:
+      - 10.244.1.<%= i*4 + 2 %>
+    cloud_properties:
+      name: random
+<% end %>
+<% (29..61).each_with_index do |i| %>
+  - range: 10.244.1.<%= i*4 %>/30
+    reserved:
+      - 10.244.1.<%= i*4 + 1 %>
+    cloud_properties:
+      name: random
+<% end %>
+<% (62..63).each_with_index do |i| %>
+  - range: 10.244.1.<%= i*4 %>/30
+    reserved:
+      - 10.244.1.<%= i*4 + 1 %>
+    static:
+      - 10.244.1.<%= i*4 + 2 %>
+    cloud_properties:
+      name: random
+<% end %>
+
+jobs: 
+- name: jenkins-master
+  template: jenkins_master
+  instances: 1
+  resource_pool: jenkins-common
+  networks:
+  - name: jenkins-network
+    static_ips:
+    - 10.244.1.2
+  persistent_disk: 4096
+
+properties: 
+  jenkins:
+    admin:
+      password: password
+

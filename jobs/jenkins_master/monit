@@ -1,0 +1,24 @@
+check process install_dependencies
+  with pidfile /var/vcap/sys/run/jenkins_master/install_dependencies.pid
+  start program "/var/vcap/jobs/jenkins_master/bin/install_dependencies_ctl start" with timeout 120 seconds
+  stop program "/var/vcap/jobs/jenkins_master/bin/install_dependencies_ctl stop"
+  group vcap
+
+
+check process jenkins_master
+  with pidfile /var/vcap/sys/run/jenkins_master/jenkins_master.pid
+  start program "/var/vcap/jobs/jenkins_master/bin/jenkins_master_ctl start" with timeout 120 seconds
+  stop program "/var/vcap/jobs/jenkins_master/bin/jenkins_master_ctl stop"
+  group vcap
+
+check process nginx_jenkins_master
+  with pidfile /var/vcap/sys/run/jenkins_master/nginx.pid
+  start program "/var/vcap/jobs/jenkins_master/bin/nginx_ctl start"
+  stop program "/var/vcap/jobs/jenkins_master/bin/nginx_ctl stop"
+  group vcap
+
+check process configure_jenkins
+  with pidfile /var/vcap/sys/run/jenkins_master/configure_jenkins.rb.pid
+  start program "/var/vcap/jobs/jenkins_master/bin/configure_jenkins_ctl start" with timeout 10 seconds
+  stop program "/var/vcap/jobs/jenkins_master/bin/configure_jenkins_ctl stop" with timeout 10 seconds
+  group vcap
