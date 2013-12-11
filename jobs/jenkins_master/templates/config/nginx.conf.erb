@@ -1,0 +1,86 @@
+user  vcap vcap;
+
+error_log /var/vcap/sys/log/jenkins_master/nginx.error.log;
+pid       /var/vcap/sys/run/jenkins_master/nginx.pid;
+
+events {
+  worker_connections  8192;
+  use epoll;
+}
+
+http {
+  include       mime.types;
+  default_type  text/html;
+  server_tokens off;
+
+  log_format main  '$host - [$time_local] '
+                   '"$request" $status $bytes_sent '
+                   '"$http_referer" "$http_user_agent" '
+                   '$proxy_add_x_forwarded_for response_time:$upstream_response_time';
+
+  access_log  /var/vcap/sys/log/jenkins_master/nginx.access.log  main;
+
+  sendfile             on;  #enable use of sendfile()
+  tcp_nopush           on;
+  tcp_nodelay          on;  #disable nagel's algorithm
+
+  keepalive_timeout   5;
+
+  ## Compression
+  gzip on;
+  gzip_http_version 1.0;
+  gzip_comp_level 2;
+  gzip_proxied any;
+  gzip_min_length  1100;
+  gzip_buffers 16 8k;
+  gzip_types text/plain text/html text/css application/x-javascript \
+      text/xml application/xml application/xml+rss text/javascript;
+  # Some version of IE 6 don't handle compression well on some mime-types, 
+  # so just disable for them
+  gzip_disable "MSIE [1-6].(?!.*SV1)";
+  # Set a vary header so downstream proxies don't send cached gzipped 
+  # content to IE6
+  gzip_vary on;
+
+  client_max_body_size 256M; #already enforced upstream/but doesn't hurt.
+
+  upstream jenkins_master {
+    server 127.0.0.1:<%= p("jenkins.server.internal_http_port") %> fail_timeout=0;
+  }
+
+  server {
+    listen 80 default;
+
+    # enable on IPv6 platforms
+    # listen [::]:80 default ipv6only=on;
+
+    server_name  _;
+    server_name_in_redirect off;
+
+    proxy_send_timeout 300;
+    proxy_read_timeout 300;
+
+    # proxy and log all traffic
+    location / {
+      proxy_redirect off;
+
+      if (!-f $request_filename) {
+          proxy_pass http://jenkins_master;
+          break;
+      }
+
+      proxy_set_header        Host            $host;
+      proxy_set_header        X-Real-IP       $remote_addr;
+      proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+
+      proxy_connect_timeout   150;
+      proxy_send_timeout      100;
+      proxy_read_timeout      100;
+      proxy_buffers           4 32k;
+
+      client_max_body_size    8m;
+      client_body_buffer_size 128k;
+    }
+
+  }
+}

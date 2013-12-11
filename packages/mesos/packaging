@@ -1,0 +1,23 @@
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# Available variables
+# $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
+# $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+
+MESOS_VERSION=0.14.2
+MESOS_NAME=mesos-$MESOS_VERSION
+MESOS_TAR=${BOSH_COMPILE_TARGET}/mesos/$MESOS_NAME.tar.gz
+
+export JAVA_HOME=$(readlink -nf /var/vcap/packages/openjdk/jdk)
+#PYTHON=$(readlink -nf /var/vcap/packages/python27/python)
+
+#rm /usr/bin/python2.6
+#rm /usr/bin/python2
+#ln -sf $PYTHON /usr/bin/python
+
+cd ${BOSH_INSTALL_TARGET}
+tar xzC ${BOSH_INSTALL_TARGET} -f $MESOS_TAR --strip 1
+./configure --disable-python --disable-webui --with-java-home=$JAVA_HOME
+make
+make install

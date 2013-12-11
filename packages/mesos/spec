@@ -1,0 +1,6 @@
+---
+name: mesos
+dependencies: 
+  - openjdk
+files:
+  - mesos/mesos-0.14.2.tar.gz 

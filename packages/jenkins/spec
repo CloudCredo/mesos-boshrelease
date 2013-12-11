@@ -1,0 +1,6 @@
+---
+name: jenkins
+dependencies: [] # no compile dependencies
+files:
+- jenkins/jenkins-1.531.war
+- jenkins/mesos.hpi

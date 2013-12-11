@@ -1,0 +1,5 @@
+---
+name: openjdk
+dependencies: []
+files:
+  - openjdk/jdk1.6.0_35.tar.gz
