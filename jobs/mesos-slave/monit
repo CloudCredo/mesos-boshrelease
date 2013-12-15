@@ -1,0 +1,5 @@
+check process mesos-slave
+  with pidfile /var/vcap/sys/run/mesos-slave/mesos-slave.pid
+  start program "/var/vcap/jobs/mesos-slave/bin/monit_debugger mesos-slave_ctl '/var/vcap/jobs/mesos-slave/bin/mesos-slave_ctl start'"
+  stop program "/var/vcap/jobs/mesos-slave/bin/monit_debugger mesos-slave_ctl '/var/vcap/jobs/mesos-slave/bin/mesos-slave_ctl stop'"
+  group vcap

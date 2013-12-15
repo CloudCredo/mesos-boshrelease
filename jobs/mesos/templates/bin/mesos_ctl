@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# Setup env vars and folders for the webapp_ctl script
+# source /var/vcap/jobs/mesos/helpers/ctl_setup.sh 'mesos'
+
+JOB_NAME=mesos
+LOG_DIR=/var/vcap/sys/log/$JOB_NAME
+RUN_DIR=/var/vcap/sys/run/$JOB_NAME
+PIDFILE=$RUN_DIR/$JOB_NAME.pid
+
+mkdir -p $LOG_DIR
+mkdir -p $RUN_DIR
+
+case $1 in
+
+  start)
+    
+    exec /var/vcap/packages/mesos/bin/mesos-master.sh --log_dir="/var/vcap/sys/log/mesos/" --port=5050 --cluster="bosh-lite"   \
+         >>$LOG_DIR/$JOB_NAME.stdout.log \
+         2>>$LOG_DIR/$JOB_NAME.stderr.log &
+
+    # store pid in $PIDFILE
+    echo $! > $PIDFILE
+    ;;
+
+  stop)
+    kill `cat $PIDFILE`
+
+    ;;
+  *)
+    echo "Usage: mesos_ctl {start|stop}"
+
+    ;;
+
+esac
+exit 0

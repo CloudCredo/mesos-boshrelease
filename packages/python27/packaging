@@ -4,6 +4,17 @@ set -u # report the usage of uninitialized variables
 # Available variables
 # $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+export HOME=/var/vcap
 
-cp jenkins/jenkins-1.531.war $BOSH_INSTALL_TARGET/jenkins.war
-cp jenkins/mesos.hpi $BOSH_INSTALL_TARGET/mesos.hpi
+tar zxvf ${BOSH_COMPILE_TARGET}/python/Python-2.7.tgz
+if [[ $? != 0 ]] ; then
+  echo "Cannot unpack Python"
+  exit 1
+fi
+
+cd Python-2.7
+./configure 
+make
+make install
+
+cp -a * ${BOSH_INSTALL_TARGET}

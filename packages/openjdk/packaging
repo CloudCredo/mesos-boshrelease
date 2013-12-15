@@ -4,6 +4,15 @@ set -u # report the usage of uninitialized variables
 # Available variables
 # $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
+export HOME=/var/vcap
 
-cp jenkins/jenkins-1.531.war $BOSH_INSTALL_TARGET/jenkins.war
-cp jenkins/mesos.hpi $BOSH_INSTALL_TARGET/mesos.hpi
+tar zxvf ${BOSH_COMPILE_TARGET}/openjdk/jdk1.6.0_35.tar.gz
+if [[ $? != 0 ]] ; then
+  echo "Cannot unpack JDK"
+  exit 1
+fi
+
+mv jdk1.6.0_35 jdk
+ln -s jdk/jre
+
+cp -a * ${BOSH_INSTALL_TARGET}

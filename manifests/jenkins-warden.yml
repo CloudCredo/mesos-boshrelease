@@ -1,11 +1,9 @@
 ---
 name: jenkins
-director_uuid: a725732d-dbc3-40c9-949c-e9c31d1717e0 
+director_uuid: 53e56169-85eb-428f-b2ef-04caf08525bb
 
 releases:
 - name: jenkins
-  version: latest
-- name: mesos
   version: latest
 
 compilation:
@@ -62,7 +60,9 @@ networks:
 
 jobs: 
 - name: jenkins-master
-  template: jenkins_master
+  template: 
+  - jenkins_master
+  - mesos
   instances: 1
   resource_pool: jenkins-common
   networks:
@@ -75,4 +75,3 @@ properties:
   jenkins:
     admin:
       password: password
-

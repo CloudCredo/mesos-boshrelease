@@ -7,6 +7,8 @@ packages:
 - git
 - ruby
 - configure_jenkins
+- mesos
+- openjdk
 templates:
   bin/jenkins_master_ctl: bin/jenkins_master_ctl
   bin/configure_jenkins_ctl: bin/configure_jenkins_ctl

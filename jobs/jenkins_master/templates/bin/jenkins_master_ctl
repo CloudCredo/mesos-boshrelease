@@ -10,6 +10,7 @@ export LANG=en_US.UTF-8
 export JENKINS_HOME=/var/vcap/store/jenkins_master
 java_binary=/var/vcap/packages/jre/bin/java
 jenkins_war=/var/vcap/packages/jenkins/jenkins.war
+mesos_plugin=/var/vcap/packages/jenkins/mesos.hpi
 
 case $1 in
 
@@ -19,9 +20,14 @@ case $1 in
     echo $$ > $PIDFILE
 
     mkdir -p $JENKINS_HOME
+   
+    export MESOS_NATIVE_LIBRARY=/var/vcap/data/packages/mesos/0.2-dev.1/src/.libs/libmesos.so    
+     
+    cp $mesos_plugin /var/vcap/store/jenkins_master/plugins/    
 
     flags=(
       -Djava.io.tmpdir="$TMPDIR"
+      -Djava.library.path=$MESOS_NATIVE_LIBRARY
       -jar $jenkins_war
       --argumentsRealm.passwd.$ADMIN_USER=$ADMIN_PASSWORD
       --argumentsRealm.roles.$ADMIN_USER=admin
