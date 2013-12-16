@@ -18,7 +18,10 @@ case $1 in
 
   start)
     
-    exec /var/vcap/packages/mesos/bin/mesos-master.sh --log_dir="/var/vcap/sys/log/mesos/" --port=5050 --cluster="bosh-lite"   \
+    exec /var/vcap/packages/mesos/bin/mesos-master.sh \
+         --log_dir=$LOG_DIR \
+         --port=5050  \
+         --cluster="bosh-lite" \
          >>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log &
 

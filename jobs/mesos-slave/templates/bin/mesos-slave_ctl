@@ -15,7 +15,12 @@ case $1 in
 
   start)
 
-    exec /var/vcap/packages/mesos/bin/mesos-slave.sh --log_dir="/var/vcap/sys/log/mesos-slave/" --port=5051 --master="10.244.0.2:5050" --checkpoint=true  \
+    exec /var/vcap/packages/mesos/bin/mesos-slave.sh \
+         --log_dir=$LOG_DIR \
+         --port=5051\
+         --master="10.244.0.2:5050"\
+         --checkpoint=true  \
+         --no-switch_user \
          >>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log &
     
