@@ -20,10 +20,10 @@ case $1 in
     echo $$ > $PIDFILE
 
     mkdir -p $JENKINS_HOME
-   
-    export MESOS_NATIVE_LIBRARY=/var/vcap/data/packages/mesos/0.2-dev.1/src/.libs/libmesos.so    
+    mkdir $JENKINS_HOME/plugins
+
+    export MESOS_NATIVE_LIBRARY=/var/vcap/data/packages/mesos/0.2-dev.1/src/.libs/libmesos.so 
      
-    cp $mesos_plugin /var/vcap/store/jenkins_master/plugins/    
 
     flags=(
       -Djava.io.tmpdir="$TMPDIR"
@@ -48,7 +48,6 @@ case $1 in
     exec chpst -u vcap:vcap $java_binary ${flags[*]} \
          >>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log
-
     ;;
 
   stop)
