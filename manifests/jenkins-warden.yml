@@ -63,6 +63,7 @@ jobs:
   template: 
   - jenkins_master
   - mesos
+  - mesos-slave
   instances: 1
   resource_pool: jenkins-common
   networks:
