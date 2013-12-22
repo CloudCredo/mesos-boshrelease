@@ -20,7 +20,7 @@ case $1 in
 
   start)
     
-    exec /var/vcap/packages/mesos/bin/mesos-master.sh \
+    exec chpst -u vcap:vcap /var/vcap/packages/mesos/bin/mesos-master.sh \
          --log_dir=$LOG_DIR \
          --port=5050 \
          --cluster="bosh-lite" \

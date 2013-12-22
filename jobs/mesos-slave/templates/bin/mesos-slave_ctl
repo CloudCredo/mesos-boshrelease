@@ -17,10 +17,10 @@ case $1 in
 
   start)
 
-    exec /var/vcap/packages/mesos/bin/mesos-slave.sh \
+    exec chpst -u vcap:vcap /var/vcap/packages/mesos/bin/mesos-slave.sh \
          --log_dir=$LOG_DIR \
          --port=5051\
-         --master="10.244.0.2:5050"\
+         --master="localhost:5050"\
          --checkpoint=true  \
          --no-switch_user \
          >>$LOG_DIR/$JOB_NAME.stdout.log \
