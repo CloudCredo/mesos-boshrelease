@@ -11,7 +11,7 @@ PIDFILE=$RUN_DIR/$JOB_NAME.pid
 export JAVA_HOME=/var/vcap/packages/jre/
 export MESOS_HOME=/var/vcap/packages/mesos/
 
-export PATH=$JAVA_HOME:$PATH
+export PATH=$JAVA_HOME/bin:$PATH
 
 mkdir -p $LOG_DIR
 mkdir -p $RUN_DIR

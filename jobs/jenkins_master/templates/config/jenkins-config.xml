@@ -14,7 +14,21 @@
   <jdks/>
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
-  <clouds/>
+  <clouds>
+    <org.jenkinsci.plugins.mesos.MesosCloud plugin="mesos@0.1.1-SNAPSHOT">
+      <name>MesosCloud</name>
+      <nativeLibraryPath>/var/vcap/packages/mesos/src/.libs/libmesos.so</nativeLibraryPath>
+      <master>10.244.1.2:5050</master> <!-- TODO Make this into a property -->
+      <description></description>
+      <slaveCpus>1</slaveCpus>
+      <slaveMem>512</slaveMem>
+      <executorCpus>1</executorCpus>
+      <maxExecutors>2</maxExecutors>
+      <executorMem>128</executorMem>
+      <idleTerminationMinutes>3</idleTerminationMinutes>
+      <labelString>mesos</labelString>
+    </org.jenkinsci.plugins.mesos.MesosCloud>
+  </clouds>
   <slaves/>
   <quietPeriod>5</quietPeriod>
   <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
