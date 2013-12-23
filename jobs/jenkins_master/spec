@@ -6,7 +6,6 @@ packages:
 - nginx
 - git
 - ruby
-- configure_jenkins
 - mesos
 - openjdk
 templates:
