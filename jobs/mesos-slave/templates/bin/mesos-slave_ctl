@@ -8,7 +8,10 @@ LOG_DIR=/var/vcap/sys/log/$JOB_NAME
 RUN_DIR=/var/vcap/sys/run/$JOB_NAME
 PIDFILE=$RUN_DIR/$JOB_NAME.pid
 
-export PATH=/var/vcap/packages/jre/bin/:$PATH
+export JAVA_HOME=/var/vcap/packages/jre/
+export MESOS_HOME=/var/vcap/packages/mesos/
+
+export PATH=$JAVA_HOME:$PATH
 
 mkdir -p $LOG_DIR
 mkdir -p $RUN_DIR
@@ -16,8 +19,10 @@ mkdir -p $RUN_DIR
 case $1 in
 
   start)
+     
+    chown --recursive vcap:vcap $MESOS_HOME
 
-    exec chpst -u vcap:vcap /var/vcap/packages/mesos/bin/mesos-slave.sh \
+    exec chpst -u vcap:vcap $MESOS_HOME/bin/mesos-slave.sh \
          --log_dir=$LOG_DIR \
          --port=5051\
          --master="localhost:5050"\
