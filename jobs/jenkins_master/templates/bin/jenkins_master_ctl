@@ -23,9 +23,12 @@ case $1 in
     mkdir -p $JENKINS_HOME/jobs
     
     export MESOS_NATIVE_LIBRARY=/var/vcap/packages/mesos/src/.libs/libmesos.so 
-    
-    chown --recursive vcap:vcap $JENKINS_HOME
+
+    cp /var/vcap/packages/jenkins/mesos.hpi $JENKINS_HOME/plugins    
+    cp /var/vcap/jobs/jenkins_master/config/config.xml $JENKINS_HOME    
    
+    chown --recursive vcap:vcap $JENKINS_HOME
+
     flags=(
       -Djava.io.tmpdir="$TMPDIR"
       -Djava.library.path=$MESOS_NATIVE_LIBRARY

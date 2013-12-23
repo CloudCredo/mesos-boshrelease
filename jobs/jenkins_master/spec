@@ -17,7 +17,7 @@ templates:
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
   config/nginx.conf.erb: config/nginx.conf
   config/mime.types: config/mime.types
-  config/config.xml: config/config.xml
+  config/jenkins-config.xml: config/config.xml
 properties:
   jenkins.admin.password:
     description: Admin user password
