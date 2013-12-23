@@ -9,9 +9,3 @@ check process nginx_jenkins_master
   start program "/var/vcap/jobs/jenkins_master/bin/nginx_ctl start"
   stop program "/var/vcap/jobs/jenkins_master/bin/nginx_ctl stop"
   group vcap
-
-check process configure_jenkins
-  with pidfile /var/vcap/sys/run/jenkins_master/configure_jenkins.rb.pid
-  start program "/var/vcap/jobs/jenkins_master/bin/configure_jenkins_ctl start" with timeout 10 seconds
-  stop program "/var/vcap/jobs/jenkins_master/bin/configure_jenkins_ctl stop" with timeout 10 seconds
-  group vcap

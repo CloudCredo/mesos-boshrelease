@@ -1,4 +1,0 @@
-#!/bin/bash
-
-export GEM_HOME=/var/vcap/packages/configure_jenkins/vendor/bundle/ruby/1.9.1
-chpst -u vcap:vcap /var/vcap/packages/configure_jenkins/lib/configure_jenkins.rb $1
