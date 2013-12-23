@@ -14,8 +14,6 @@ templates:
   bin/configure_jenkins_ctl: bin/configure_jenkins_ctl
   bin/monit_debugger: bin/monit_debugger
   bin/nginx_ctl: bin/nginx_ctl
-  bin/install_dependencies_ctl: bin/install_dependencies_ctl
-  bin/install_dependencies.sh: bin/install_dependencies.sh
   data/properties.sh.erb: data/properties.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
