@@ -1,0 +1,59 @@
+#!/bin/bash
+
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# Setup env vars and folders for the webapp_ctl script
+source /var/vcap/jobs/jenkins_master/helpers/ctl_setup.sh 'jenkins_master'
+
+export LANG=en_US.UTF-8
+export JENKINS_HOME=/var/vcap/store/jenkins_master
+java_binary=/var/vcap/packages/jre/bin/java
+jenkins_war=/var/vcap/packages/jenkins/jenkins.war
+
+case $1 in
+
+  start)
+    pid_guard $PIDFILE $JOB_NAME
+
+    echo $$ > $PIDFILE
+
+    mkdir -p $JENKINS_HOME
+    mkdir -p $JENKINS_HOME/plugins
+    mkdir -p $JENKINS_HOME/jobs
+    
+    export MESOS_NATIVE_LIBRARY=/var/vcap/packages/mesos/src/.libs/libmesos.so 
+
+    cp /var/vcap/packages/jenkins/mesos.hpi $JENKINS_HOME/plugins    
+    cp /var/vcap/jobs/jenkins_master/config/config.xml $JENKINS_HOME    
+   
+    chown --recursive vcap:vcap $JENKINS_HOME
+
+    flags=(
+      -Djava.io.tmpdir="$TMPDIR"
+      -Djava.library.path=$MESOS_NATIVE_LIBRARY
+      -jar $jenkins_war
+      --argumentsRealm.passwd.$ADMIN_USER=$ADMIN_PASSWORD
+      --argumentsRealm.roles.$ADMIN_USER=admin
+      --httpPort=$PORT
+      --ajp13Port=$AJP13_PORT # unless ssl
+    )
+
+    exec chpst -u vcap:vcap $java_binary ${flags[*]} \
+         >>$LOG_DIR/$JOB_NAME.stdout.log \
+         2>>$LOG_DIR/$JOB_NAME.stderr.log
+    ;;
+
+        
+
+  stop)
+    kill_and_wait $PIDFILE
+
+    ;;
+  *)
+    echo "Usage: jenkins_master_ctl {start|stop}"
+
+    ;;
+
+esac
+exit 0

@@ -1,0 +1,17 @@
+config/dev.yml
+releases/*.tgz
+dev_releases
+blobs
+.blobs
+.dev_builds
+.idea
+.final_builds/jobs/**/*.tgz
+.final_builds/packages/**/*.tgz
+*.swp
+*~
+*#
+#*
+.gitreview
+.cache
+bosh-stemcell-vsphere-*.tgz
+vendor
