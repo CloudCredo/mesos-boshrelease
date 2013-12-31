@@ -22,6 +22,10 @@ Once deployed Jenkins should be available at `http://10.244.1.2` and the Mesos c
 
 To create a Jenkins job that will run on Mesos add the label 'mesos' to the jobs (configure -> Restrict where this project can run checkbox) that you want to be run on a Jenkins slave launched on Mesos
 
+## Road Map
+
+1. Create Zoo Keeper Mangaged Apache Mesos Cluster
+2. Seperate Jenkins and Mesos jobs into seperate releases
 
 ## Disclaimer 
 This is not presently a production ready Apche Mesos release. This is a work in progress. Please raise any issue to chris@cghsystems.net
