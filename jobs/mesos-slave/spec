@@ -4,11 +4,18 @@ packages:
 - openjdk
 - mesos
 templates:
-  bin/mesos-slave_ctl: bin/mesos-slave_ctl
+  bin/mesos-slave_ctl.erb: bin/mesos-slave_ctl
   bin/monit_debugger: bin/monit_debugger
   data/properties.sh.erb: data/properties.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
 properties:
-  mesos.master_node:
+  mesos.master.ip:
     description: Mesos master node address  
+  mesos.master.port:
+    description: The port to listen on
+    default: 5050
+
+  mesos.slave.port:
+    description: Mesos slave port to listen on
+    default: 5051

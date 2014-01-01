@@ -76,3 +76,9 @@ properties:
   jenkins:
     admin:
       password: password
+  mesos:
+    master:
+      ip: 10.244.1.2
+      port: 5050
+    slave:
+      port: 5051
