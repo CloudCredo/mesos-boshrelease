@@ -22,7 +22,7 @@ update:
 resource_pools:
 - name: jenkins-common
   network: jenkins-network
-  size: 1
+  size: 2
   stemcell:
     name: bosh-stemcell
     version: latest
@@ -62,7 +62,6 @@ jobs:
 - name: jenkins-master
   template: 
   - jenkins_master
-  - mesos
   - mesos-slave
   instances: 1
   resource_pool: jenkins-common
@@ -72,13 +71,27 @@ jobs:
     - 10.244.1.2
   persistent_disk: 4096
 
+- name: mesos-master
+  template: 
+  - mesos-master
+  instances: 1
+  resource_pool: jenkins-common
+  networks:
+  - name: jenkins-network
+    static_ips:
+    - 10.244.1.6
+  persistent_disk: 4096
+
+
 properties: 
   jenkins:
     admin:
       password: password
   mesos:
+    cluster:
+      name: Bosh Mesos Cluster
     master:
-      ip: 10.244.1.2
+      ip: 10.244.1.6
       port: 5050
     slave:
       port: 5051
