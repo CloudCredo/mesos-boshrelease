@@ -25,7 +25,8 @@ case $1 in
     exec chpst -u vcap:vcap $MESOS_HOME/bin/mesos-slave.sh \
          --log_dir=$LOG_DIR \
          --port=<%= p("mesos.slave.port") %>\
-	 --master="<%= p("mesos.master.ip") %>:<%= p("mesos.master.port") %>"\
+	 --master=<%= p("mesos.master.ip") %>:<%= p("mesos.master.port") %> \
+         --ip=10.244.1.2 \
          --checkpoint=true  \
          --no-switch_user \
          >>$LOG_DIR/$JOB_NAME.stdout.log \

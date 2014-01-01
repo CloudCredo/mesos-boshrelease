@@ -1,0 +1,24 @@
+---
+name: mesos-master
+packages:
+- openjdk
+- python27
+- mesos 
+templates:
+  bin/mesos_master_ctl.erb: bin/mesos_master_ctl
+  bin/monit_debugger: bin/monit_debugger
+  data/properties.sh.erb: data/properties.sh
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+properties:
+  mesos.master.ip:
+    description: The IP address of the Mesos master
+    default: 127.0.0.1
+  mesos.master.port:
+    description: The port to listen on
+    default: 5050
+  
+  mesos.cluster.name:
+    description: The name of the cluster as shown in the Mesos admin ui
+    default: bosh-lite-mesos-cluster
+
