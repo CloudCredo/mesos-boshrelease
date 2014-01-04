@@ -28,7 +28,7 @@ To create a Jenkins job that will run on Mesos add the label 'mesos' to the jobs
 2. Seperate Jenkins and Mesos jobs into separate releases
 
 ## Disclaimer 
-This is not presently a production ready Apche Mesos release. This is a work in progress. Please raise any issue to chris@cghsystems.net
+This is not presently a production ready Apche Mesos release. This is a work in progress. Please raise any issue to chris@cloudcredo.com
 
 The release has been created and tested against [Bosh Lite][5]. 
 
