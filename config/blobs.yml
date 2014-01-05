@@ -1,24 +1,4 @@
 ---
-java/jre-1.6.0_24-x86_64.tar.gz:
-  object_id: 1f403bc7-0cc4-4638-b777-0eeb916837ac
-  sha: !binary |-
-    MDUxMWQ4MzNkZmQ5ODI1YTI2YzE4ZTlkNjg1ZGU2NGFjMDE1MWU4NQ==
-  size: 34453414
-jenkins/jenkins-1.509.2.war:
-  object_id: a8234a26-eaaa-4134-8db7-c80e0d300bbf
-  sha: !binary |-
-    N2Q1OTVkZGQ4NTdmOTk5Yjc3MGIwZWMwMmI5YjBlODhjMGIyZTE3YQ==
-  size: 53863401
-nginx/nginx-1.4.2.tar.gz:
-  object_id: fefc993f-fca8-4cbc-8e62-fb59a0842c81
-  sha: !binary |-
-    OGYwMDZkYzc3Mzg0MGI2NjI0YTEzN2E1ODRmZjg4NTBkNTE1NWUzZg==
-  size: 767688
-nginx/pcre-8.33.tar.gz:
-  object_id: 3ba61134-3e47-4c1f-bd4d-c72d324c9ab7
-  sha: !binary |-
-    YmNlYWZiNTM1NTMyMTlkYWQyNTkzYmI4YWYwNmRhNGQwN2ZkMzgyOA==
-  size: 1889401
 git/git-1.7.11.2.tar.gz:
   object_id: 2b9c5d5d-ef30-4fef-ad9a-2226487c4d2f
   sha: !binary |-
@@ -69,3 +49,18 @@ ruby/rubygems-1.8.24.tgz:
   sha: !binary |-
     MzBmMjcwNDdlNzRmNzk0MzExNzczNmEwZDNlMjI0OTk0ZmVlMDkwNQ==
   size: 380101
+java/jre-1.6.0_24-x86_64.tar.gz:
+  object_id: b0151cec-5203-4a06-8614-84cd2abab4eb
+  sha: !binary |-
+    MDUxMWQ4MzNkZmQ5ODI1YTI2YzE4ZTlkNjg1ZGU2NGFjMDE1MWU4NQ==
+  size: 34453414
+nginx/nginx-1.4.2.tar.gz:
+  object_id: 6f65ed59-2d46-45b4-b409-2ed59542c158
+  sha: !binary |-
+    OGYwMDZkYzc3Mzg0MGI2NjI0YTEzN2E1ODRmZjg4NTBkNTE1NWUzZg==
+  size: 767688
+nginx/pcre-8.33.tar.gz:
+  object_id: cc094393-47e2-4c8c-8e8f-7b1fc08d4b34
+  sha: !binary |-
+    YmNlYWZiNTM1NTMyMTlkYWQyNTkzYmI4YWYwNmRhNGQwN2ZkMzgyOA==
+  size: 1889401
