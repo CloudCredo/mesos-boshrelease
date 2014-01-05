@@ -1,66 +1,66 @@
 ---
 git/git-1.7.11.2.tar.gz:
-  object_id: 2b9c5d5d-ef30-4fef-ad9a-2226487c4d2f
+  object_id: 14702340-1cc2-4284-aed9-d47924610b8b
   sha: !binary |-
     ZjY3YjRmNmMwMjc3MjUwNDExYzY4NzJhZTdiOGE4NzJhZTExZDMxMw==
   size: 4015780
+java/jre-1.6.0_24-x86_64.tar.gz:
+  object_id: d91c1349-6348-41ab-b9c8-ceef8cff8be4
+  sha: !binary |-
+    MDUxMWQ4MzNkZmQ5ODI1YTI2YzE4ZTlkNjg1ZGU2NGFjMDE1MWU4NQ==
+  size: 34453414
 jenkins/jenkins-1.531.war:
-  object_id: 856b9355-ba5a-4f53-a544-6de843326ff3
+  object_id: 71540757-5e1f-453f-8dfe-e8ca7894d1fc
   sha: !binary |-
     YWY3NjhiMTczNzgwMDQyNWZjZTliZWE1YmZhY2RiMTJmYTE3NWYyMg==
   size: 62953726
 jenkins/mesos.hpi:
-  object_id: c7e0c7b5-8186-4c75-b7af-7c464de283cd
+  object_id: 9ea95019-6383-4052-afed-d116d8a88ec4
   sha: !binary |-
     NjM5MDc3YjRlYWFiNTdmYjg0Y2NkOWJiMzhjZmRiMjEyYTI2MGE2YQ==
   size: 748607
 libyaml/yaml-0.1.4.tgz:
-  object_id: 60dbd125-f2ad-4994-9d7a-cc2e6c90bb4c
+  object_id: fe84422d-f960-40c5-9842-8b1558586afd
   sha: !binary |-
     ZTBlNWUwOTE5MmFiMTBhNjA3ZTNkYTI5NzBkYjQ5MjExOGY1NjBmMg==
   size: 471759
 mesos/mesos-0.14.2.tar.gz:
-  object_id: 02bdfa22-1da2-49ff-b7c4-3f39c52ad8c7
+  object_id: 246899f6-6dcf-49a7-9284-346b02ee9290
   sha: !binary |-
     YzE0ZjBkOTgyYjQxZDQxOGUyODAzZTNkN2JlMzc0NmZlZjM5NjA0OQ==
   size: 23962250
-openjdk/jdk1.6.0_35.tar.gz:
-  object_id: a93174ac-49a1-4e1c-8525-21c8448f7ec3
-  sha: !binary |-
-    NDdlYWQ0NWM2NThmOWM3MjU3N2QyMDJkOGFhMTY3NTQ2MWVlM2FkNg==
-  size: 67126391
-python/Python-2.7.tgz:
-  object_id: 4efc9192-8d39-4ddb-8113-5ed326ad8567
-  sha: !binary |-
-    YjAzNzhlMGQxY2E1NmJkZjIyYWM0MmVhMzJhMzIxM2VmMmU0Njk3Zg==
-  size: 14026384
-ruby/bundler-1.2.1.gem:
-  object_id: d79c57cf-064f-47ea-bf70-0f421e1388d9
-  sha: !binary |-
-    MGNiZTZhZDdhNDFmMDY0ZDZjMTFjMTA1ODQ2NWZmZmIxYmQ1ODA2OQ==
-  size: 226816
-ruby/ruby-1.9.3-p448.tar.gz:
-  object_id: c4965c95-2056-40d4-a75b-16ba5ce94f21
-  sha: !binary |-
-    YzdmNzM2ZTNiYzFjYTFlNjYxOWE5MTIxODM3ZGQwODQwYWFkNzdjZQ==
-  size: 12559260
-ruby/rubygems-1.8.24.tgz:
-  object_id: 02fd8b40-f09e-43de-a4e2-5baeefa3a242
-  sha: !binary |-
-    MzBmMjcwNDdlNzRmNzk0MzExNzczNmEwZDNlMjI0OTk0ZmVlMDkwNQ==
-  size: 380101
-java/jre-1.6.0_24-x86_64.tar.gz:
-  object_id: b0151cec-5203-4a06-8614-84cd2abab4eb
-  sha: !binary |-
-    MDUxMWQ4MzNkZmQ5ODI1YTI2YzE4ZTlkNjg1ZGU2NGFjMDE1MWU4NQ==
-  size: 34453414
 nginx/nginx-1.4.2.tar.gz:
-  object_id: 6f65ed59-2d46-45b4-b409-2ed59542c158
+  object_id: 75b22eb1-cd69-4c7a-9569-7bedbbdcf4c7
   sha: !binary |-
     OGYwMDZkYzc3Mzg0MGI2NjI0YTEzN2E1ODRmZjg4NTBkNTE1NWUzZg==
   size: 767688
 nginx/pcre-8.33.tar.gz:
-  object_id: cc094393-47e2-4c8c-8e8f-7b1fc08d4b34
+  object_id: 87d0beaf-8c1a-4078-bf8a-d2f607f87519
   sha: !binary |-
     YmNlYWZiNTM1NTMyMTlkYWQyNTkzYmI4YWYwNmRhNGQwN2ZkMzgyOA==
   size: 1889401
+openjdk/jdk1.6.0_35.tar.gz:
+  object_id: 23175eee-2343-4995-93de-4e7b9d65b166
+  sha: !binary |-
+    NDdlYWQ0NWM2NThmOWM3MjU3N2QyMDJkOGFhMTY3NTQ2MWVlM2FkNg==
+  size: 67126391
+python/Python-2.7.tgz:
+  object_id: f5aab463-47f9-4edd-84c9-c62a4da2afb8
+  sha: !binary |-
+    YjAzNzhlMGQxY2E1NmJkZjIyYWM0MmVhMzJhMzIxM2VmMmU0Njk3Zg==
+  size: 14026384
+ruby/bundler-1.2.1.gem:
+  object_id: aca0d5df-1fff-4b1a-8180-e11542587ad6
+  sha: !binary |-
+    MGNiZTZhZDdhNDFmMDY0ZDZjMTFjMTA1ODQ2NWZmZmIxYmQ1ODA2OQ==
+  size: 226816
+ruby/ruby-1.9.3-p448.tar.gz:
+  object_id: eacae42a-67eb-4993-ab65-e03ea558139d
+  sha: !binary |-
+    YzdmNzM2ZTNiYzFjYTFlNjYxOWE5MTIxODM3ZGQwODQwYWFkNzdjZQ==
+  size: 12559260
+ruby/rubygems-1.8.24.tgz:
+  object_id: 78118c82-5ee3-4eff-bbdd-5eb994c8a7b5
+  sha: !binary |-
+    MzBmMjcwNDdlNzRmNzk0MzExNzczNmEwZDNlMjI0OTk0ZmVlMDkwNQ==
+  size: 380101
