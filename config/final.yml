@@ -4,5 +4,3 @@ blobstore:
   provider: s3
   options:
     bucket_name: bosh-mesos
-    access_key_id: AKIAIOKQDQDJHAZ2XVHQ
-    encryption_key: sp$abcd123$foobar1234
