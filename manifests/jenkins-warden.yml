@@ -1,9 +1,9 @@
 ---
-name: jenkins
+name: bosh-jenkins-mesos
 director_uuid: 53e56169-85eb-428f-b2ef-04caf08525bb
 
 releases:
-- name: jenkins
+- name: bosh-jenkins-mesos
   version: latest
 
 compilation:
