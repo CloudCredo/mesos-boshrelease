@@ -24,7 +24,7 @@ resource_pools:
   network: jenkins-network
   size: 2
   stemcell:
-    name: bosh-stemcell
+    name: bosh-warden-boshlite-ubuntu
     version: latest
   cloud_properties:
     name: random
