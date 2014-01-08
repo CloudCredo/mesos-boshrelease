@@ -23,6 +23,7 @@ case $1 in
   start)
 
     chown --recursive vcap:vcap $MESOS_HOME
+    chown --recursive vcap:vcap $LOG_DIR
  
     exec chpst -u vcap:vcap $MESOS_HOME/bin/mesos-master.sh \
          --log_dir=$LOG_DIR \
