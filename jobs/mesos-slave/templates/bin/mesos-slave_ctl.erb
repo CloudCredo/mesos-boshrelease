@@ -13,6 +13,8 @@ export MESOS_HOME=/var/vcap/packages/mesos/
 
 export PATH=$JAVA_HOME/bin:$PATH
 
+export MY_IPADDRESS=<%= `hostname -I | cut -d' ' -f1` %>
+
 mkdir -p $LOG_DIR
 mkdir -p $RUN_DIR
 
@@ -27,8 +29,8 @@ case $1 in
          --log_dir=$LOG_DIR \
          --port=<%= p("mesos.slave.port") %>\
 	 --master=<%= p("mesos.master.ip") %>:<%= p("mesos.master.port") %> \
-         --ip=10.244.1.2 \
          --checkpoint=true  \
+         --ip=$MY_IPADDRESS \
          --no-switch_user \
          >>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log &
