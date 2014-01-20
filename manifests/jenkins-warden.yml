@@ -22,7 +22,7 @@ update:
 resource_pools:
 - name: jenkins-common
   network: jenkins-network
-  size: 4
+  size: 2
   stemcell:
     name: bosh-warden-boshlite-ubuntu
     version: latest
@@ -59,20 +59,21 @@ networks:
 <% end %>
 
 jobs: 
-#- name: jenkins-master
-#  template: 
-#  - jenkins_master
-#  instances: 1
-#  resource_pool: jenkins-common
-#  networks:
-#  - name: jenkins-network
-#    static_ips:
-#    - 10.244.1.2
-#  persistent_disk: 4096
+- name: jenkins-master
+  template: 
+  - jenkins_master
+  instances: 1
+  resource_pool: jenkins-common
+  networks:
+  - name: jenkins-network
+    static_ips:
+    - 10.244.1.2
+  persistent_disk: 4096
 
 - name: mesos-master
   template: 
   - mesos-master
+  - mesos-slave
   instances: 1
   resource_pool: jenkins-common
   networks:
@@ -81,14 +82,14 @@ jobs:
     - 10.244.1.6
   persistent_disk: 4096
 
-- name: mesos-slave
-  template: 
-  - mesos-slave
-  instances: 3
-  resource_pool: jenkins-common
-  networks:
-  - name: jenkins-network
-  persistent_disk: 4096
+#- name: mesos-slave
+#  template: 
+#  - mesos-slave
+#  instances: 1
+#  resource_pool: jenkins-common
+#  networks:
+#  - name: jenkins-network
+#  persistent_disk: 4096
 
 properties: 
   jenkins:

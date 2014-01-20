@@ -12,8 +12,8 @@ RUN_DIR=/var/vcap/sys/run/$JOB_NAME
 PIDFILE=$RUN_DIR/$JOB_NAME.pid
 
 export MESOS_HOME=/var/vcap/packages/mesos/
-export JAVA_HOME=/var/vcap/packages/jre/bin/
-export PATH=$JAVA_HOME:$PATH
+export JAVA_HOME=/var/vcap/packages/openjdk/jdk/
+export PATH=$JAVA_HOME/bin:$PATH
 
 mkdir -p $LOG_DIR
 mkdir -p $RUN_DIR
@@ -24,13 +24,13 @@ case $1 in
 
     chown --recursive vcap:vcap $MESOS_HOME
     chown --recursive vcap:vcap $LOG_DIR
- 
+    
     exec chpst -u vcap:vcap $MESOS_HOME/bin/mesos-master.sh \
          --log_dir=$LOG_DIR \
          --port=<%= p("mesos.master.port") %> \
          --cluster="<%= p("mesos.cluster.name") %>" \
          --ip=<%= p("mesos.master.ip") %> \
-         >>$LOG_DIR/$JOB_NAME.stdout.log \
+         1>>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log &
 
     # store pid in $PIDFILE

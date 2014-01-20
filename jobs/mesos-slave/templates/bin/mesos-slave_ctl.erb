@@ -8,12 +8,10 @@ LOG_DIR=/var/vcap/sys/log/$JOB_NAME
 RUN_DIR=/var/vcap/sys/run/$JOB_NAME
 PIDFILE=$RUN_DIR/$JOB_NAME.pid
 
-export JAVA_HOME=/var/vcap/packages/jre/
+export JAVA_HOME=/var/vcap/packages/openjdk/jdk/
 export MESOS_HOME=/var/vcap/packages/mesos/
 
 export PATH=$JAVA_HOME/bin:$PATH
-
-export MY_IPADDRESS=<%= `hostname -I | cut -d' ' -f1` %>
 
 mkdir -p $LOG_DIR
 mkdir -p $RUN_DIR
@@ -30,9 +28,8 @@ case $1 in
          --port=<%= p("mesos.slave.port") %>\
 	 --master=<%= p("mesos.master.ip") %>:<%= p("mesos.master.port") %> \
          --checkpoint=true  \
-         --ip=$MY_IPADDRESS \
          --no-switch_user \
-         >>$LOG_DIR/$JOB_NAME.stdout.log \
+         1>>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log &
     
     echo $! > $PIDFILE
