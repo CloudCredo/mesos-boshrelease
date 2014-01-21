@@ -67,7 +67,7 @@ jobs:
   networks:
   - name: jenkins-network
     static_ips:
-    - 10.244.1.250
+    - 10.244.1.14
   persistent_disk: 4096
 
 - name: mesos-master
@@ -78,7 +78,7 @@ jobs:
   networks:
   - name: jenkins-network
     static_ips:
-    - 10.244.1.254
+    - 10.244.1.6
   persistent_disk: 4096
 
 - name: mesos-slave
@@ -98,7 +98,7 @@ properties:
     cluster:
       name: Bosh Mesos Cluster
     master:
-      ip: 10.244.1.254
+      ip: 10.244.1.6
       port: 5050
     slave:
       port: 5051
