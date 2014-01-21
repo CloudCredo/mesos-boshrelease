@@ -22,6 +22,8 @@ case $1 in
      
     chown --recursive vcap:vcap $MESOS_HOME
     chown --recursive vcap:vcap $LOG_DIR
+        
+    export LIBPROCESS_IP=<%= `hostname -I | cut -d' ' -f1`.chomp %>
 
     exec chpst -u vcap:vcap $MESOS_HOME/bin/mesos-slave.sh \
          --log_dir=$LOG_DIR \
