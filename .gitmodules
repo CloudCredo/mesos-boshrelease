@@ -1,0 +1,3 @@
+[submodule "src/mesos-plugin"]
+	path = src/mesos-plugin
+	url = https://github.com/jenkinsci/mesos-plugin.git

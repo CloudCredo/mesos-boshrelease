@@ -6,14 +6,14 @@ set -u # report the usage of uninitialized variables
 # Setup env vars and folders for the webapp_ctl script
 # source /var/vcap/jobs/mesos/helpers/ctl_setup.sh 'mesos'
 
-JOB_NAME=mesos
+JOB_NAME=mesos-master
 LOG_DIR=/var/vcap/sys/log/$JOB_NAME
 RUN_DIR=/var/vcap/sys/run/$JOB_NAME
 PIDFILE=$RUN_DIR/$JOB_NAME.pid
 
 export MESOS_HOME=/var/vcap/packages/mesos/
-export JAVA_HOME=/var/vcap/packages/jre/bin/
-export PATH=$JAVA_HOME:$PATH
+export JAVA_HOME=/var/vcap/packages/openjdk/jdk/
+export PATH=$JAVA_HOME/bin:$PATH
 
 mkdir -p $LOG_DIR
 mkdir -p $RUN_DIR
@@ -23,12 +23,14 @@ case $1 in
   start)
 
     chown --recursive vcap:vcap $MESOS_HOME
- 
+    chown --recursive vcap:vcap $LOG_DIR
+    
     exec chpst -u vcap:vcap $MESOS_HOME/bin/mesos-master.sh \
          --log_dir=$LOG_DIR \
-         --port=5050 \
-         --cluster="bosh-lite" \
-         >>$LOG_DIR/$JOB_NAME.stdout.log \
+         --port=<%= p("mesos.master.port") %> \
+         --cluster="<%= p("mesos.cluster.name") %>" \
+         --ip=<%= p("mesos.master.ip") %> \
+         1>>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log &
 
     # store pid in $PIDFILE

@@ -1,0 +1,5 @@
+check process mesos-master
+  with pidfile /var/vcap/sys/run/mesos-master/mesos-master.pid
+  start program "/var/vcap/jobs/mesos-master/bin/monit_debugger mesos_ctl '/var/vcap/jobs/mesos-master/bin/mesos_master_ctl start'"
+  stop program "/var/vcap/jobs/mesos-master/bin/monit_debugger mesos_ctl '/var/vcap/jobs/mesos-master/bin/mesos_master_ctl stop'"
+  group vcap

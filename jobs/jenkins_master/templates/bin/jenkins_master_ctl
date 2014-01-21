@@ -23,6 +23,7 @@ case $1 in
     mkdir -p $JENKINS_HOME/jobs
     
     export MESOS_NATIVE_LIBRARY=/var/vcap/packages/mesos/src/.libs/libmesos.so 
+    export LIBPROCESS_IP=<%= `hostname -I | cut -d' ' -f1`.chomp %>
 
     cp /var/vcap/packages/jenkins/mesos.hpi $JENKINS_HOME/plugins    
     cp /var/vcap/jobs/jenkins_master/config/config.xml $JENKINS_HOME    
