@@ -24,7 +24,7 @@ To create a Jenkins job that will run on Mesos add the label 'mesos' to the jobs
 
 ## Road Map
 
-1. Create Zoo Keeper managed Apache Mesos Cluster
+~~1. Create Zoo Keeper managed Apache Mesos Cluster~~
 2. Seperate Jenkins and Mesos jobs into separate releases
 3. Add Marathon support
 4. Add Chronos support
