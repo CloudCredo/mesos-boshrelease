@@ -97,6 +97,9 @@ properties:
   mesos:
     cluster:
       name: Bosh Mesos Cluster
+    zookeeper:
+      ip: 10.244.1.26
+      port: 2181
     master:
       ip: 10.244.1.6
       port: 5050

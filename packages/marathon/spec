@@ -1,0 +1,7 @@
+---
+name: marathon
+dependencies:
+- openjdk
+files:
+- marathon
+

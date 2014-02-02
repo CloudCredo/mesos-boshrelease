@@ -18,7 +18,7 @@
     <org.jenkinsci.plugins.mesos.MesosCloud plugin="mesos@0.1.1-SNAPSHOT">
       <name>MesosCloud</name>
       <nativeLibraryPath>/var/vcap/packages/mesos/src/.libs/libmesos.so</nativeLibraryPath>
-      <master>10.244.1.2:5050</master> <!-- TODO Make this into a property -->
+      <master>10.244.1.6:5050</master> <!-- TODO Make this into a property -->
       <description></description>
       <slaveCpus>1</slaveCpus>
       <slaveMem>512</slaveMem>

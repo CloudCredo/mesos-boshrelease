@@ -28,8 +28,8 @@ case $1 in
     exec chpst -u vcap:vcap $MESOS_HOME/bin/mesos-slave.sh \
          --log_dir=$LOG_DIR \
          --port=<%= p("mesos.slave.port") %>\
-	 --master=<%= p("mesos.master.ip") %>:<%= p("mesos.master.port") %> \
          --checkpoint=true  \
+         --master=zk://<%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>/mesos \
          --no-switch_user \
          1>>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log &

@@ -30,6 +30,7 @@ case $1 in
          --port=<%= p("mesos.master.port") %> \
          --cluster="<%= p("mesos.cluster.name") %>" \
          --ip=<%= p("mesos.master.ip") %> \
+         --zk=zk://<%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>/mesos \
          1>>$LOG_DIR/$JOB_NAME.stdout.log \
          2>>$LOG_DIR/$JOB_NAME.stderr.log &
 

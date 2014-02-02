@@ -1,3 +1,6 @@
 [submodule "src/mesos-plugin"]
 	path = src/mesos-plugin
 	url = https://github.com/jenkinsci/mesos-plugin.git
+[submodule "src/marathon"]
+	path = src/marathon
+	url = https://github.com/mesosphere/marathon

@@ -15,7 +15,13 @@ properties:
   mesos.master.port:
     description: The port to listen on
     default: 5050
-
   mesos.slave.port:
     description: Mesos slave port to listen on
     default: 5051
+  mesos.zookeeper.ip:
+    description: The ip address of the Zookeeper server used to manage the Mesos cluster
+  mesos.zookeeper.port:
+    description: The port of the Zookeeper server used to manage the Mesos cluster
+  mesos.cluster.name:
+    description: The name of the cluster as shown in the Mesos admin ui
+    default: bosh-lite-mesos-cluster
