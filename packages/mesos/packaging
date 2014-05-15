@@ -5,16 +5,15 @@ set -u # report the usage of uninitialized variables
 # $BOSH_COMPILE_TARGET - where this package & spec'd source files are available
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 
-MESOS_VERSION=0.14.2
+
+MESOS_VERSION=0.18.0
 MESOS_NAME=mesos-$MESOS_VERSION
 MESOS_TAR=${BOSH_COMPILE_TARGET}/mesos/$MESOS_NAME.tar.gz
 
 export JAVA_HOME=$(readlink -nf /var/vcap/packages/openjdk/jdk)
-#PYTHON=$(readlink -nf /var/vcap/packages/python27/python)
 
-#rm /usr/bin/python2.6
-#rm /usr/bin/python2
-#ln -sf $PYTHON /usr/bin/python
+export LDFLAGS="-L/var/vcap/packages/sasl/lib"
+export CPPFLAGS="-I/var/vcap/packages/sasl/include"
 
 cd ${BOSH_INSTALL_TARGET}
 tar xzC ${BOSH_INSTALL_TARGET} -f $MESOS_TAR --strip 1

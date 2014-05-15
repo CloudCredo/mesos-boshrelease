@@ -4,6 +4,7 @@ packages:
 - openjdk
 - python27
 - mesos 
+- sasl
 templates:
   bin/mesos_master_ctl.erb: bin/mesos_master_ctl
   bin/monit_debugger: bin/monit_debugger

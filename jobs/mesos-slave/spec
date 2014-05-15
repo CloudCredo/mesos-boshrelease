@@ -3,6 +3,7 @@ name: mesos-slave
 packages:
 - openjdk
 - mesos
+- sasl
 templates:
   bin/mesos-slave_ctl.erb: bin/mesos-slave_ctl
   bin/monit_debugger: bin/monit_debugger

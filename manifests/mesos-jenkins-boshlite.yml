@@ -1,6 +1,6 @@
 ---
 name: bosh-jenkins-mesos
-director_uuid: 53e56169-85eb-428f-b2ef-04caf08525bb
+director_uuid: 51abcb52-334e-44a8-8f3d-00d2c271919e
 
 releases:
 - name: bosh-jenkins-mesos
