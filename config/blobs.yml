@@ -64,3 +64,18 @@ ruby/rubygems-1.8.24.tgz:
   sha: !binary |-
     MzBmMjcwNDdlNzRmNzk0MzExNzczNmEwZDNlMjI0OTk0ZmVlMDkwNQ==
   size: 380101
+marathon/marathon-0.4.1-jar-with-dependencies.jar:
+  object_id: 3074490f-bfe2-4b70-9157-7a1c01c0f7b5
+  sha: !binary |-
+    Yjg5MjkyYzYzZmEzMzAyZTQ4MTliYTNhYzE2MzRlMjJkYjI2ZmI2Zg==
+  size: 48995342
+mesos/mesos-0.18.0.tar.gz:
+  object_id: 99d7fe36-b38a-4665-8eca-b6baa7382384
+  sha: !binary |-
+    NmVmMTgzZTg5NDBjYTAzNmFmMjU4NGM2M2IzMmUyZjZlN2Y2YjY2MA==
+  size: 27582335
+sasl/cyrus-sasl-2.1.26.tar.gz:
+  object_id: 731ef16f-1656-41e3-b8b5-fffd67651fc6
+  sha: !binary |-
+    ZDY2NjlmYjkxNDM0MTkyNTI5YmQxM2VlOTU3MzdhOGE1MDQwMjQxYw==
+  size: 5220231
