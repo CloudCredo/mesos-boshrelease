@@ -1,0 +1,5 @@
+check process marathon
+  with pidfile /var/vcap/sys/run/marathon/marathon.pid
+  start program "/var/vcap/jobs/marathon/bin/monit_debugger marathon_ctl '/var/vcap/jobs/marathon/bin/marathon_ctl start'"
+  stop program "/var/vcap/jobs/marathon/bin/monit_debugger marathon_ctl '/var/vcap/jobs/marathon/bin/marathon_ctl stop'"
+  group vcap

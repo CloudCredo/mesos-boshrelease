@@ -1,0 +1,13 @@
+---
+name: marathon
+
+templates: 
+  bin/marathon_ctl.erb: bin/marathon_ctl
+  bin/monit_debugger: bin/monit_debugger
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+
+packages:
+- marathon
+- jre
+- mesos
+- sasl

@@ -1,0 +1,48 @@
+set -e
+
+JOB_NAME=marathon
+PID_FILE=/var/vcap/sys/run/$JOB_NAME/marathon.pid
+LOG_DIR=/var/vcap/sys/log/$JOB_NAME
+RUN_DIR=/var/vcap/sys/run/$JOB_NAME
+JOB_DIR=/var/vcap/packages/$JOB_NAME
+
+JAVA_BINARY=/var/vcap/packages/jre/bin/java
+
+mkdir -p $LOG_DIR
+mkdir -p $RUN_DIR
+
+case $1 in
+
+  start)
+        
+    chown --recursive vcap:vcap $LOG_DIR
+
+    ulimit -n 8192
+
+    export MESOS_NATIVE_LIBRARY=/var/vcap/packages/mesos/src/.libs/libmesos.so 
+    export LIBPROCESS_IP=<%= `hostname -I | cut -d' ' -f1`.chomp %>
+
+    exec chpst -u vcap:vcap \
+         $JAVA_BINARY \
+         -cp $JOB_DIR/marathon.jar mesosphere.marathon.Main \
+	 --master zk://<%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>/mesos \
+         --zk_hosts <%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %> \
+         --task_launch_timeout 2400000 \
+         1>>$LOG_DIR/$JOB_NAME.stdout.log \
+         2>>$LOG_DIR/$JOB_NAME.stderr.log &
+
+    echo $! > $PID_FILE
+
+    ;; 
+
+  stop)
+    kill `cat $PID_FILE`
+    ;;
+
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+    ;;
+
+esac
+exit 0

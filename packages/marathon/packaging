@@ -1,4 +1,4 @@
 set -e
 set -u
 
-cp -a marathon/marathon-0.4.1-jar-with-dependencies.jar ${BOSH_INSTALL_TARGET}/marathon.jar
+cp -a marathon/marathon-0.5.0-SNAPSHOT-jar-with-dependencies.jar ${BOSH_INSTALL_TARGET}/marathon.jar
