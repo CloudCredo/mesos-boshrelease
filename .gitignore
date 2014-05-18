@@ -16,3 +16,5 @@ blobs
 bosh-stemcell-vsphere-*.tgz
 vendor
 private.yml
+tags
+examples

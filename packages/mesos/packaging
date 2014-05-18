@@ -1,4 +1,5 @@
 set -e # exit immediately if a simple command exits with a non-zero status
+
 set -u # report the usage of uninitialized variables
 
 # Available variables
@@ -6,11 +7,13 @@ set -u # report the usage of uninitialized variables
 # $BOSH_INSTALL_TARGET - where you copy/install files to be included in package
 
 
-MESOS_VERSION=0.18.0
+MESOS_VERSION=0.18.1
 MESOS_NAME=mesos-$MESOS_VERSION
 MESOS_TAR=${BOSH_COMPILE_TARGET}/mesos/$MESOS_NAME.tar.gz
 
 export JAVA_HOME=$(readlink -nf /var/vcap/packages/openjdk/jdk)
+export MAVEN_HOME=/var/vcap/packages/maven3/bin
+export PATH=$PATH:$MAVEN_HOME
 
 export LDFLAGS="-L/var/vcap/packages/sasl/lib"
 export CPPFLAGS="-I/var/vcap/packages/sasl/include"

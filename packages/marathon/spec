@@ -1,7 +1,6 @@
 ---
 name: marathon
-dependencies:
-- openjdk
+dependencies: []
 files:
-- marathon
+- marathon/marathon-0.4.1-jar-with-dependencies.jar
 

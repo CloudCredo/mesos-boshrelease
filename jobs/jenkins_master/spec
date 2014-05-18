@@ -8,6 +8,7 @@ packages:
 - ruby
 - mesos
 - openjdk
+- sasl
 templates:
   bin/jenkins_master_ctl: bin/jenkins_master_ctl
   bin/nginx_ctl: bin/nginx_ctl

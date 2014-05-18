@@ -3,5 +3,6 @@ name: mesos
 dependencies: 
   - openjdk
   - sasl
+  - maven3
 files:
-  - mesos/mesos-0.18.0.tar.gz 
+  - mesos/mesos-0.18.1.tar.gz 

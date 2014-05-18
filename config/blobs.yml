@@ -14,21 +14,11 @@ jenkins/jenkins-1.531.war:
   sha: !binary |-
     YWY3NjhiMTczNzgwMDQyNWZjZTliZWE1YmZhY2RiMTJmYTE3NWYyMg==
   size: 62953726
-jenkins/mesos.hpi:
-  object_id: 35fc150e-9c24-4863-a0b9-5ad8ef319c37
-  sha: !binary |-
-    NjM5MDc3YjRlYWFiNTdmYjg0Y2NkOWJiMzhjZmRiMjEyYTI2MGE2YQ==
-  size: 748607
 libyaml/yaml-0.1.4.tgz:
   object_id: 2323d3c5-cb9a-49ee-b266-c82858af5c2b
   sha: !binary |-
     ZTBlNWUwOTE5MmFiMTBhNjA3ZTNkYTI5NzBkYjQ5MjExOGY1NjBmMg==
   size: 471759
-mesos/mesos-0.14.2.tar.gz:
-  object_id: c4a04731-1913-4c49-93dc-434acf76c0b9
-  sha: !binary |-
-    YzE0ZjBkOTgyYjQxZDQxOGUyODAzZTNkN2JlMzc0NmZlZjM5NjA0OQ==
-  size: 23962250
 nginx/nginx-1.4.2.tar.gz:
   object_id: b04a6f17-bebd-4d14-a1fa-e825c767b34f
   sha: !binary |-
@@ -69,13 +59,23 @@ marathon/marathon-0.4.1-jar-with-dependencies.jar:
   sha: !binary |-
     Yjg5MjkyYzYzZmEzMzAyZTQ4MTliYTNhYzE2MzRlMjJkYjI2ZmI2Zg==
   size: 48995342
-mesos/mesos-0.18.0.tar.gz:
-  object_id: 99d7fe36-b38a-4665-8eca-b6baa7382384
-  sha: !binary |-
-    NmVmMTgzZTg5NDBjYTAzNmFmMjU4NGM2M2IzMmUyZjZlN2Y2YjY2MA==
-  size: 27582335
 sasl/cyrus-sasl-2.1.26.tar.gz:
   object_id: 731ef16f-1656-41e3-b8b5-fffd67651fc6
   sha: !binary |-
     ZDY2NjlmYjkxNDM0MTkyNTI5YmQxM2VlOTU3MzdhOGE1MDQwMjQxYw==
   size: 5220231
+jenkins/mesos.hpi:
+  object_id: cc65c3b6-ab35-425c-be8e-e1b665d80c65
+  sha: !binary |-
+    NTQxN2Y0YTNiMjViMDg2MjFjODQ5ZWY0N2QyZWE4Zjc2NWRhYTlmZg==
+  size: 933903
+maven/apache-maven-3.2.1-bin.tar.gz:
+  object_id: 5941a74a-e581-4384-8f4c-0581d6113364
+  sha: !binary |-
+    NDBlMWJmMDc3NWZkM2ViY2FjMWRiZWI2MTE1M2I4NzFiODZiODk0Zg==
+  size: 6927918
+mesos/mesos-0.18.1.tar.gz:
+  object_id: 8d870ed3-00a0-4c79-bf4a-dc73008f0e2d
+  sha: !binary |-
+    Y2Y3M2RhZWMxOTEzMzY1NmYyMjI5ZTVmYWZmZTAzNTVlYWFmYWViOQ==
+  size: 27574745
