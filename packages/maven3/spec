@@ -1,0 +1,5 @@
+---
+name: maven3
+dependencies: []
+files:
+  - maven/apache-maven-3.2.1-bin.tar.gz

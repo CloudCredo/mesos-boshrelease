@@ -1,0 +1,6 @@
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+tar zxvf ${BOSH_COMPILE_TARGET}/maven/apache-maven-3.2.1-bin.tar.gz
+cd apache-maven-3.2.1 
+cp -a * ${BOSH_INSTALL_TARGET}
