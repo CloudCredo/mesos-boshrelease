@@ -79,3 +79,8 @@ mesos/mesos-0.18.1.tar.gz:
   sha: !binary |-
     Y2Y3M2RhZWMxOTEzMzY1NmYyMjI5ZTVmYWZmZTAzNTVlYWFmYWViOQ==
   size: 27574745
+marathon/marathon-0.5.0-SNAPSHOT-jar-with-dependencies.jar:
+  object_id: 029252e3-384b-4b9f-b733-ca5ea0f1a28d
+  sha: !binary |-
+    NWE4NmMzMWRkZWI2ZGRkNmU3MzA5NjI2MDMyZWQ3YzdkZDJhNDgxNQ==
+  size: 46434703
