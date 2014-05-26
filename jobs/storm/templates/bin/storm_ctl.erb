@@ -1,0 +1,75 @@
+#!/bin/bash
+set -e
+set -u
+
+function setup_java_environment() {
+  export JAVA_HOME=/var/vcap/packages/jre7
+  export PATH:$PATH:$JAVA_HOME/bin
+}
+
+function setup_python_environment() {
+  export PYTHONHOME=/var/vcap/packages/python27
+  export PYTHONPATH=$PYTHONHOME/Lib
+} 
+
+function setup_umlimit() {
+  ulimit -n 8192
+}
+
+function setup_bosh_environment() {
+  JOB_NAME=storm
+  PID_FILE=/var/vcap/sys/run/$JOB_NAME/$JOB_NAME.pid
+  RUN_DIR=/var/vcap/sys/run/$JOB_NAME
+  JOB_DIR=/var/vcap/packages/$JOB_NAME
+  LOG_DIR=/var/vcap/sys/log/$JOB_NAME
+
+  mkdir -p $LOG_DIR
+  mkdir -p $RUN_DIR
+  chown --recursive vcap:vcap $LOG_DIR
+}
+
+function setup_mesos_environment() {
+  export MESOS_NATIVE_LIBRARY=/var/vcap/packages/mesos/src/.libs/libmesos.so
+  export LIBPROCESS_IP=<%= spec.networks.send(p('mesos.network')).ip %>
+}
+
+function start_storm() {
+  flags=(
+    nimbus
+    -Dstorm.conf.file=/var/vcap/jobs/storm/config/storm.yaml 
+  )  
+
+  exec chpst -u vcap:vcap \
+       $JOB_DIR/bin/storm-mesos ${flags[*]} \
+       1>>$LOG_DIR/$JOB_NAME.stdout.log \
+       2>>$LOG_DIR/$JOB_NAME.stderr.log &
+
+  echo $! > $PID_FILE
+}
+
+function kill_storm() {
+  kill `cat $PID_FILE`
+}
+  
+case $1 in
+
+  start)
+    setup_bosh_environment     
+    setup_umlimit
+    setup_python_environment
+    setup_java_environment
+    setup_mesos_environment
+    start_storm 
+    ;; 
+
+  stop)
+    kill_storm 
+    ;;
+
+  *)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+    ;;
+
+esac
+exit 0

@@ -11,6 +11,8 @@ templates:
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
 properties:
+  mesos.network:
+    description: The name of the network the job will run within
   mesos.master.ip:
     description: Mesos master node address  
   mesos.master.port:

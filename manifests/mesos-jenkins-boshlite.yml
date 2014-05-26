@@ -1,6 +1,6 @@
 ---
 name: apache-mesos
-director_uuid: 51abcb52-334e-44a8-8f3d-00d2c271919e
+director_uuid: c5f8d0da-f8ac-4918-a1a3-0a846fb97d09
 
 releases:
 - name: apache-mesos
@@ -22,9 +22,9 @@ update:
 resource_pools:
 - name: jenkins-common
   network: jenkins-network
-  size: 4
+  size: 5
   stemcell:
-    name: bosh-warden-boshlite-ubuntu
+    name: bosh-warden-boshlite-ubuntu-lucid-go_agent
     version: latest
   cloud_properties:
     name: random
@@ -34,6 +34,8 @@ networks:
   subnets:
 <% (0..28).each_with_index do |i| %>
   - range: 10.244.1.<%= i*4 %>/30
+    dns: 
+    - 8.8.8.8
     reserved:
       - 10.244.1.<%= i*4 + 1 %>
     static:
@@ -43,6 +45,8 @@ networks:
 <% end %>
 <% (29..61).each_with_index do |i| %>
   - range: 10.244.1.<%= i*4 %>/30
+    dns:
+    - 8.8.8.8
     reserved:
       - 10.244.1.<%= i*4 + 1 %>
     cloud_properties:
@@ -50,6 +54,8 @@ networks:
 <% end %>
 <% (62..63).each_with_index do |i| %>
   - range: 10.244.1.<%= i*4 %>/30
+    dns: 
+    - 8.8.8.8
     reserved:
       - 10.244.1.<%= i*4 + 1 %>
     static:
@@ -59,17 +65,6 @@ networks:
 <% end %>
 
 jobs: 
-
-- name: marathon
-  template: 
-  - marathon
-  instances: 1
-  resource_pool: jenkins-common
-  networks:
-  - name: jenkins-network
-    static_ips:
-    - 10.244.1.18
-  persistent_disk: 4096
 
 - name: jenkins-master
   template: 
@@ -102,11 +97,33 @@ jobs:
   - name: jenkins-network
   persistent_disk: 4096
 
+- name: marathon
+  template: 
+  - marathon
+  instances: 1
+  resource_pool: jenkins-common
+  networks:
+  - name: jenkins-network
+    static_ips:
+    - 10.244.1.18
+  persistent_disk: 4096
+
+- name: storm
+  template: 
+  - storm
+  instances: 1
+  resource_pool: jenkins-common
+  networks:
+  - name: jenkins-network
+    static_ips:
+    - 10.244.1.22
+
 properties: 
   jenkins:
     admin:
       password: password
   mesos:
+    network: jenkins-network
     cluster:
       name: Bosh Mesos Cluster
     zookeeper:

@@ -1,0 +1,5 @@
+check process storm
+  with pidfile /var/vcap/sys/run/storm/storm.pid
+  start program "/var/vcap/jobs/storm/bin/monit_debugger storm_ctl '/var/vcap/jobs/storm/bin/storm_ctl start'"
+  stop program "/var/vcap/jobs/storm/bin/monit_debugger storm_ctl '/var/vcap/jobs/storm/bin/storm_ctl stop'"
+  group vcap

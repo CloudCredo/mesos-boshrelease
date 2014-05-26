@@ -1,15 +1,17 @@
 ---
-name: marathon
+name: storm
 
 templates: 
-  bin/marathon_ctl.erb: bin/marathon_ctl
+  bin/storm_ctl.erb: bin/storm_ctl
   bin/monit_debugger: bin/monit_debugger
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  config/storm.yaml.erb: config/storm.yml
 packages:
-- marathon
-- jre
+- storm
+- jre7
 - mesos
 - sasl
+- python27
 properties:
   mesos.network:
     description: The name of the network the job will run within
@@ -17,3 +19,4 @@ properties:
     description: The ip address of the Zookeeper server used to manage the Mesos cluster
   mesos.zookeeper.port:
     description: The port of the Zookeeper server used to manage the Mesos cluster
+

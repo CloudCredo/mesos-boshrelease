@@ -1,0 +1,4 @@
+---
+name: jre7
+files:
+- java/openjdk-1.7.0_55.tar.gz

@@ -19,6 +19,8 @@ templates:
   config/mime.types: config/mime.types
   config/jenkins-config.xml: config/config.xml
 properties:
+  mesos.network:
+    description: The name of the network the job will run within
   jenkins.admin.password:
     description: Admin user password
   jenkins.server.internal_http_port:

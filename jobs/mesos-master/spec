@@ -12,6 +12,8 @@ templates:
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
 properties:
+  mesos.network:
+    description: The name of the network the job will run within
   mesos.master.ip:
     description: The IP address of the Mesos master
     default: 127.0.0.1

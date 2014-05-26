@@ -1,50 +1,63 @@
 #!/bin/bash
 
-set -e # exit immediately if a simple command exits with a non-zero status
-set -u # report the usage of uninitialized variables
+set -e 
+set -u 
 
-# Setup env vars and folders for the webapp_ctl script
-# source /var/vcap/jobs/mesos/helpers/ctl_setup.sh 'mesos'
+function setup_java_environment() {
+  export JAVA_HOME=/var/vcap/packages/openjdk/jdk/
+  export PATH=$JAVA_HOME/bin:$PATH
+}
 
-JOB_NAME=mesos-master
-LOG_DIR=/var/vcap/sys/log/$JOB_NAME
-RUN_DIR=/var/vcap/sys/run/$JOB_NAME
-PIDFILE=$RUN_DIR/$JOB_NAME.pid
+function setup_mesos_environment() {
+  export MESOS_HOME=/var/vcap/packages/mesos/
+  HOSTNAME=<%= spec.networks.send(p('mesos.network')).ip %>
+  chown --recursive vcap:vcap $MESOS_HOME
+}
 
-export MESOS_HOME=/var/vcap/packages/mesos/
-export JAVA_HOME=/var/vcap/packages/openjdk/jdk/
-export PATH=$JAVA_HOME/bin:$PATH
+function setup_bosh_environment() {
+  JOB_NAME=mesos-master
+  LOG_DIR=/var/vcap/sys/log/$JOB_NAME
+  RUN_DIR=/var/vcap/sys/run/$JOB_NAME
+  PIDFILE=$RUN_DIR/$JOB_NAME.pid
+  
+  mkdir -p $LOG_DIR
+  mkdir -p $RUN_DIR
+  chown --recursive vcap:vcap $LOG_DIR
+}
 
-mkdir -p $LOG_DIR
-mkdir -p $RUN_DIR
+function kill_mesos() {
+  kill `cat $PIDFILE`
+}
+
+function start_mesos() {
+  flags=(
+    --log_dir=$LOG_DIR 
+    --port=<%= p("mesos.master.port") %> 
+    --cluster="<%= p("mesos.cluster.name") %>" 
+    --ip=<%= p("mesos.master.ip") %> 
+    --hostname=$HOSTNAME 
+    --zk=zk://<%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>/mesos 
+  )  
+
+  exec chpst -u vcap:vcap $MESOS_HOME/bin/mesos-master.sh ${flags[*]} \
+    1>>$LOG_DIR/$JOB_NAME.stdout.log \
+    2>>$LOG_DIR/$JOB_NAME.stderr.log &
+  
+  echo $! > $PIDFILE
+}
 
 case $1 in
-
   start)
-
-    chown --recursive vcap:vcap $MESOS_HOME
-    chown --recursive vcap:vcap $LOG_DIR
-    
-    exec chpst -u vcap:vcap $MESOS_HOME/bin/mesos-master.sh \
-         --log_dir=$LOG_DIR \
-         --port=<%= p("mesos.master.port") %> \
-         --cluster="<%= p("mesos.cluster.name") %>" \
-         --ip=<%= p("mesos.master.ip") %> \
-         --zk=zk://<%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>/mesos \
-         1>>$LOG_DIR/$JOB_NAME.stdout.log \
-         2>>$LOG_DIR/$JOB_NAME.stderr.log &
-
-    # store pid in $PIDFILE
-    echo $! > $PIDFILE
+    setup_bosh_environment
+    setup_java_environment
+    setup_mesos_environment
+    start_mesos 
     ;;
-
   stop)
-    kill `cat $PIDFILE`
-
+    kill_mesos
     ;;
   *)
-    echo "Usage: mesos_ctl {start|stop}"
-
+    echo "Usage: $0 {start|stop}"
     ;;
 
 esac

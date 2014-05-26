@@ -1,0 +1,6 @@
+set -e
+set -u
+
+tar xzf ./storm/storm-mesos-0.9.tgz 
+cd storm-mesos-0.9
+cp -a * ${BOSH_INSTALL_TARGET}

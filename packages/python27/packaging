@@ -16,5 +16,5 @@ cd Python-2.7
 ./configure 
 make
 make install
-
+chmod 777 .
 cp -a * ${BOSH_INSTALL_TARGET}
