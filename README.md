@@ -1,10 +1,11 @@
 # Bosh release for Apache Mesos
 
-This is a simple [Bosh][2] release for [Apache Mesos][1]. It is designed to showcase Apache Mesos deployments with Bosh. The example release illustrates Mesos functionality by spinning up [Jenkins CI][3] slave jobs within an Apache Mesos cluster. The release contains three jobs
+This is a simple [Bosh][2] release for [Apache Mesos][1]. It is designed to showcase Apache Mesos deployments with Bosh. The example release illustrates Mesos functionality by spinning up [Jenkins CI][3] slave jobs within an Apache Mesos cluster. The release contains four jobs
 
 1. A Mesos master job
 2. A Mesos slave 
 3. A Jenkins master 
+4. A [Marathon][6] job
 
 The release runs [Apache Mesos][1] version 0.14. Jenkins is configured with the [Jenkins CI Mesos plugin][4]. The plugin was built from source as the published Jenkins plugin for Apache Mesos does not work against version 0.14.
 
@@ -18,16 +19,21 @@ To build:
 4. Run `bosh upload release`
 5. Run `bosh deploy`. This stage takes about 15 minutes running on a MacBook Pro running OSX Mavericks with 16gb RAM and an Intel core I7 2.7ghz. The majority of the time is taken up compiling Apache Mesos.
 
+## Jenkins
 Once deployed Jenkins should be available at `http://10.244.1.2` and the Mesos console should be available at `http://10.244.1.2:5050/`. There should be a single registered Mesos slave visible under the `Slaves` tab.
 
-To create a Jenkins job that will run on Mesos add the label 'mesos' to the jobs (configure -> Restrict where this project can run checkbox) that you want to be run on a Jenkins slave launched on Mesos
+To create a Jenkins job that will run on Mesos add the label 'mesos' to the jobs (configure -> Restrict where this project can run checkbox) that you want to be run on a Jenkins slave launched on Mesos. Test out the connection via the 'Cloud' section under 'Configure Jenkins'
+
+## Marathon
+Apache [Marathon][6] should be available at `http://10.244.1.18:8080`
 
 ## Road Map
 
-1. ~~Create Zoo Keeper managed Apache Mesos Cluster~~
+1. ~~Create Zoo Keeper managed Apache Mesos Cluster~~ 
 2. Seperate Jenkins and Mesos jobs into separate releases
-3. Add Marathon support
+3. ~~Add Marathon supporti~~
 4. Add Chronos support
+5. Add Storm support - WIP
 
 ## Disclaimer 
 This is not presently a production ready Apche Mesos release. This is a work in progress. Please raise any issue to chris@cloudcredo.com
@@ -39,3 +45,4 @@ The release has been created and tested against [Bosh Lite][5].
 [3]: http://jenkins-ci.org
 [4]: https://github.com/jenkinsci/mesos-plugin
 [5]: https://github.com/cloudfoundry/bosh-lite
+[6]: https://github.com/mesosphere/marathon
