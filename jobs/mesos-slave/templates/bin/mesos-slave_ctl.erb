@@ -4,13 +4,13 @@ set -e
 set -u 
 
 function setup_java_environment() {
-  export PATH=$JAVA_HOME/bin:$PATH
   export JAVA_HOME=/var/vcap/packages/openjdk/jdk/
+  export PATH=$JAVA_HOME/bin:$PATH
 }
 
 function setup_mesos_environment() {
   export MESOS_HOME=/var/vcap/packages/mesos/
-  #export LIBPROCESS_IP=<%= spec.networks.send(p('mesos.network')).ip %>
+  export LIBPROCESS_IP=<%= spec.networks.send(p('mesos.network')).ip %>
   chown --recursive vcap:vcap $MESOS_HOME
 }
 
@@ -19,17 +19,17 @@ function setup_bosh_environment() {
   LOG_DIR=/var/vcap/sys/log/$JOB_NAME
   RUN_DIR=/var/vcap/sys/run/$JOB_NAME
   PIDFILE=$RUN_DIR/$JOB_NAME.pid
-  chown --recursive vcap:vcap $LOG_DIR
   mkdir -p $LOG_DIR
   mkdir -p $RUN_DIR
+  chown --recursive vcap:vcap $LOG_DIR
 }
 
 function start_mesos() {
   flags=(
     --log_dir=$LOG_DIR 
-    #--port=<%= p("mesos.slave.port") %>
+    --port=<%= p("mesos.slave.port") %>
     --checkpoint=true  
-    #--master=zk://<%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>/mesos 
+    --master=zk://<%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>/mesos 
     --no-switch_user 
     --hostname=$LIBPROCESS_IP 
   )  

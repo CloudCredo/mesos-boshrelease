@@ -33,7 +33,7 @@ function start_mesos() {
   flags=(
     --log_dir=$LOG_DIR 
     --port=<%= p("mesos.master.port") %> 
-    --cluster="<%= p("mesos.cluster.name") %>" 
+    --cluster=<%= p("mesos.cluster.name") %>
     --ip=<%= p("mesos.master.ip") %> 
     --hostname=$HOSTNAME 
     --zk=zk://<%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>/mesos 
