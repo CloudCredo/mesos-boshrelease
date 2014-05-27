@@ -19,6 +19,7 @@ To build:
 4. Run `bosh upload release`
 5. Run `bosh deployment manifests/mesos-jenkins-boshlite.yml`
 6. Run `bosh deploy`. This stage takes about 15 minutes running on a MacBook Pro running OSX Mavericks with 16gb RAM and an Intel core I7 2.7ghz. The majority of the time is taken up compiling Apache Mesos.
+7. Add tests
 
 ## Jenkins
 Once deployed Jenkins should be available at `http://10.244.1.2` and the Mesos console should be available at `http://10.244.1.2:5050/`. There should be a single registered Mesos slave visible under the `Slaves` tab.
@@ -37,9 +38,9 @@ Apache [Marathon][6] should be available at `http://10.244.1.18:8080`
 5. Add Storm support - WIP
 
 ## Disclaimer 
-This is not presently a production ready Apche Mesos release. This is a work in progress. Please raise any issue to chris@cloudcredo.com
+This is not presently a production ready Apache Mesos release. This is a work in progress. Please raise any issue to chris@cloudcredo.com
 
-The release has been created and tested against [Bosh Lite][5]. 
+The release has been created and tested against [Bosh Lite][5]i with Bosh client version `BOSH 1.2560.0`. 
 
 [1]: http://mesos.apache.org
 [2]: https://github.com/cloudfoundry/bosh
