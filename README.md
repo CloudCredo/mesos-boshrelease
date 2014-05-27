@@ -17,7 +17,8 @@ To build:
 2. `cd bosh-jenkins-mesos`
 3. Run `bosh create release`
 4. Run `bosh upload release`
-5. Run `bosh deploy`. This stage takes about 15 minutes running on a MacBook Pro running OSX Mavericks with 16gb RAM and an Intel core I7 2.7ghz. The majority of the time is taken up compiling Apache Mesos.
+5. Run `bosh deployment manifests/mesos-jenkins-boshlite.yml`
+6. Run `bosh deploy`. This stage takes about 15 minutes running on a MacBook Pro running OSX Mavericks with 16gb RAM and an Intel core I7 2.7ghz. The majority of the time is taken up compiling Apache Mesos.
 
 ## Jenkins
 Once deployed Jenkins should be available at `http://10.244.1.2` and the Mesos console should be available at `http://10.244.1.2:5050/`. There should be a single registered Mesos slave visible under the `Slaves` tab.
