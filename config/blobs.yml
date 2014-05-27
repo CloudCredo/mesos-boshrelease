@@ -84,3 +84,18 @@ marathon/marathon-0.5.0-SNAPSHOT-jar-with-dependencies.jar:
   sha: !binary |-
     NWE4NmMzMWRkZWI2ZGRkNmU3MzA5NjI2MDMyZWQ3YzdkZDJhNDgxNQ==
   size: 46434703
+java/openjdk-1.7.0_55.tar.gz:
+  object_id: c94d74ce-06e4-4d26-a75c-a26c205c8317
+  sha: !binary |-
+    MDc4OGI5MWIzNWJmZGM2MjgxNDMxMDNiMTdkZTMxOTRjMzlhMzA1YQ==
+  size: 31534443
+java/openjdk-1.8.0_05.tar.gz:
+  object_id: 05c57bce-1ad5-45b8-baa4-6bdd2e4e56a4
+  sha: !binary |-
+    NDAxNjcyNDRkZmIxYTFkY2RiNGQyM2VjYzAxMWM1MDhhOGMzZTdjZg==
+  size: 38622827
+storm/storm-mesos-0.9.tgz:
+  object_id: 7a2cc01e-84a9-42fd-afcf-0468bfeb00eb
+  sha: !binary |-
+    NjEwZDA0MDUxNmIzMmM0NDBlODBmNmY0YzY0NzJiMmY4NzRkMTYyZg==
+  size: 18245741
