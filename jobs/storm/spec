@@ -1,11 +1,11 @@
 ---
 name: storm
-
 templates: 
   bin/storm_ctl.erb: bin/storm_ctl
   bin/monit_debugger: bin/monit_debugger
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
-  config/storm.yaml.erb: config/storm.yml
+  config/storm.yaml.erb: config/storm.yaml
+  config/cluster.xml: config/cluster.xml
 packages:
 - storm
 - jre7
