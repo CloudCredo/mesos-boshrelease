@@ -3,7 +3,7 @@
 # -----------------------------------------------------------
 mesos.master.url: "zk://<%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>/mesos"
 storm.zookeeper.servers:
-    - <%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>
+    - <%= p("mesos.zookeeper.ip") %>
 nimbus.host: <%= spec.networks.send(p('mesos.network')).ip %>
 # -----------------------------------------------------------
 

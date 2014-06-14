@@ -34,15 +34,16 @@ function setup_mesos_environment() {
   export LIBPROCESS_IP=<%= spec.networks.send(p('mesos.network')).ip %>
 }
 
-# Mesos storm requires that config files either be in storm home or in ~/.storm/ 
-# this method copies a Bosh version of storm.yaml in to /home/vcap/.storm/
+# Storm is not configured to take a config file on the command line (Not in a way that works!!)
+# therefore we need to replace the file in the storm package with the expect config file.
+# 
 function setup_storm_environment() {
   local config=/var/vcap/jobs/storm/config
-  local storm_home=/home/vcap/.storm
-  
-  mkdir -p $storm_home
-  cp $config/storm.yaml $storm_home 
+  local storm_data=/var/vcap/store/storm/
+  cp $config/storm.yaml $JOB_DIR/conf
   cp $config/cluster.xml $JOB_DIR/logback
+  mkdir -p $storm_data
+  chown --recursive vcap:vcap $storm_data
 }
 
 function start_storm() {
