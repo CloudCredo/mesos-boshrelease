@@ -47,13 +47,8 @@ function setup_storm_environment() {
 }
 
 function start_storm() {
-  flags=(
-    nimbus
-    #-Dstorm.conf.file=/var/vcap/jobs/storm/config/storm.yaml 
-  )  
-
   exec chpst -u vcap:vcap \
-       $JOB_DIR/bin/storm-mesos ${flags[*]} \
+       $JOB_DIR/bin/storm-mesos nimbus \
        1>>$LOG_DIR/$JOB_NAME.stdout.log \
        2>>$LOG_DIR/$JOB_NAME.stderr.log &
 
