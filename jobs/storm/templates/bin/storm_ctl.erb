@@ -4,12 +4,13 @@ set -u
 
 function setup_java_environment() {
   export JAVA_HOME=/var/vcap/packages/jre7
-  export PATH:$PATH:$JAVA_HOME/bin
+  export PATH=$PATH:$JAVA_HOME/bin
 }
 
 function setup_python_environment() {
   export PYTHONHOME=/var/vcap/packages/python27
   export PYTHONPATH=$PYTHONHOME/Lib
+  chmod --recursive 777 $PYTHONPATH
 } 
 
 function setup_umlimit() {
