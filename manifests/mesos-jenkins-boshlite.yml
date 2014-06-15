@@ -108,15 +108,15 @@ jobs:
     - 10.244.1.18
   persistent_disk: 4096
 
-#- name: storm
-#  template: 
-#  - storm
-#  instances: 1
-#  resource_pool: jenkins-common
-#  networks:
-#  - name: jenkins-network
-#    static_ips:
-#    - 10.244.1.22
+- name: storm
+  template: 
+  - storm
+  instances: 1
+  resource_pool: jenkins-common
+  networks:
+  - name: jenkins-network
+    static_ips:
+    - 10.244.1.22
 
 properties: 
   jenkins:
