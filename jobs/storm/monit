@@ -1,5 +1,11 @@
 check process storm
   with pidfile /var/vcap/sys/run/storm/storm.pid
-  start program "/var/vcap/jobs/storm/bin/monit_debugger storm_ctl '/var/vcap/jobs/storm/bin/storm_ctl start'"
-  stop program "/var/vcap/jobs/storm/bin/monit_debugger storm_ctl '/var/vcap/jobs/storm/bin/storm_ctl stop'"
+  start program "/var/vcap/jobs/storm/bin/monit_debugger storm_ctl '/var/vcap/jobs/storm/bin/storm_ctl start_storm'"
+  stop program "/var/vcap/jobs/storm/bin/monit_debugger storm_ctl '/var/vcap/jobs/storm/bin/storm_ctl stop_storm'"
+  group vcap
+
+check process storm_ui
+  with pidfile /var/vcap/sys/run/storm/storm-ui.pid
+  start program "/var/vcap/jobs/storm/bin/monit_debugger storm_ctl '/var/vcap/jobs/storm/bin/storm_ctl start_storm_ui'"
+  stop program "/var/vcap/jobs/storm/bin/monit_debugger storm_ctl '/var/vcap/jobs/storm/bin/storm_ctl stop_storm_ui'"
   group vcap

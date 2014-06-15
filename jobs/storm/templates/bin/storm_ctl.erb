@@ -19,7 +19,7 @@ function setup_umlimit() {
 
 function setup_bosh_environment() {
   JOB_NAME=storm
-  PID_FILE=/var/vcap/sys/run/$JOB_NAME/$JOB_NAME.pid
+  export PID_FILE=/var/vcap/sys/run/$JOB_NAME/$JOB_NAME.pid
   RUN_DIR=/var/vcap/sys/run/$JOB_NAME
   JOB_DIR=/var/vcap/packages/$JOB_NAME
   LOG_DIR=/var/vcap/sys/log/$JOB_NAME
@@ -55,28 +55,51 @@ function start_storm() {
   echo $! > $PID_FILE
 }
 
+function start_storm_ui() {
+  export STORM_UI_PID_FILE=/var/vcap/sys/run/$JOB_NAME/$JOB_NAME-ui.pid
+  exec chpst -u vcap:vcap \
+       $JOB_DIR/bin/storm ui \
+       1>>$LOG_DIR/$JOB_NAME-ui.stdout.log \
+       2>>$LOG_DIR/$JOB_NAME-ui.stderr.log &
+  
+  echo $! > $STORM_UI_PID_FILE
+}
+
 function kill_storm() {
   kill `cat $PID_FILE`
+}
+
+function set_up() {
+  setup_bosh_environment     
+  setup_umlimit
+  setup_python_environment
+  setup_java_environment
+  setup_mesos_environment
+  setup_storm_environment
 }
   
 case $1 in
 
-  start)
-    setup_bosh_environment     
-    setup_umlimit
-    setup_python_environment
-    setup_java_environment
-    setup_mesos_environment
-    setup_storm_environment
+  start_storm)
+    set_up
     start_storm 
     ;; 
+  
+  start_storm_ui)
+    set_up
+    start_storm_ui
+    ;;
 
-  stop)
+  stop_storm)
     kill_storm 
     ;;
 
+   stop_storm_ui)
+     kill `cat $STORM_UI_PID_FILE`
+   ;;
+
   *)
-    echo "Usage: $0 {start|stop}"
+    echo "Usage: $0 {start_storm|stop_storm|start_storm_ui|stop_storm_ui}"
     exit 1
     ;;
 
