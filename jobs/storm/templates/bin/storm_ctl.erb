@@ -2,6 +2,12 @@
 set -e
 set -u
 
+JOB_NAME=storm
+JOB_DIR=/var/vcap/packages/$JOB_NAME
+
+export STORM_PID_FILE=/var/vcap/sys/run/$JOB_NAME/$JOB_NAME.pid
+export STORM_UI_PID_FILE=/var/vcap/sys/run/$JOB_NAME/$JOB_NAME-ui.pid
+
 function setup_java_environment() {
   export JAVA_HOME=/var/vcap/packages/jre7
   export PATH=$PATH:$JAVA_HOME/bin
@@ -18,10 +24,7 @@ function setup_umlimit() {
 }
 
 function setup_bosh_environment() {
-  JOB_NAME=storm
-  export PID_FILE=/var/vcap/sys/run/$JOB_NAME/$JOB_NAME.pid
   RUN_DIR=/var/vcap/sys/run/$JOB_NAME
-  JOB_DIR=/var/vcap/packages/$JOB_NAME
   LOG_DIR=/var/vcap/sys/log/$JOB_NAME
 
   mkdir -p $LOG_DIR
@@ -47,26 +50,25 @@ function setup_storm_environment() {
 }
 
 function start_storm() {
+  echo $$ > $STORM_PID_FILE
   exec chpst -u vcap:vcap \
-       $JOB_DIR/bin/storm-mesos nimbus \
+       $JOB_DIR/bin/storm nimbus storm.mesos.MesosNimbus \
        1>>$LOG_DIR/$JOB_NAME.stdout.log \
-       2>>$LOG_DIR/$JOB_NAME.stderr.log &
-
-  echo $! > $PID_FILE
+       2>>$LOG_DIR/$JOB_NAME.stderr.log 
 }
 
 function start_storm_ui() {
-  export STORM_UI_PID_FILE=/var/vcap/sys/run/$JOB_NAME/$JOB_NAME-ui.pid
+  echo $$ > $STORM_UI_PID_FILE
   exec chpst -u vcap:vcap \
        $JOB_DIR/bin/storm ui \
        1>>$LOG_DIR/$JOB_NAME-ui.stdout.log \
-       2>>$LOG_DIR/$JOB_NAME-ui.stderr.log &
-  
-  echo $! > $STORM_UI_PID_FILE
+       2>>$LOG_DIR/$JOB_NAME-ui.stderr.log 
 }
 
-function kill_storm() {
-  kill `cat $PID_FILE`
+function kill_process() {
+  local pidfile=$1 
+  local pid=`cat $pidfile`
+  kill $pid
 }
 
 function set_up() {
@@ -91,11 +93,11 @@ case $1 in
     ;;
 
   stop_storm)
-    kill_storm 
+    kill_process $STORM_PID_FILE
     ;;
 
    stop_storm_ui)
-     kill `cat $STORM_UI_PID_FILE`
+     kill_process $STORM_UI_PID_FILE
    ;;
 
   *)
