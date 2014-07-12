@@ -3,6 +3,11 @@
 set -e 
 set -u 
 
+JOB_NAME=mesos-slave
+LOG_DIR=/var/vcap/sys/log/$JOB_NAME
+RUN_DIR=/var/vcap/sys/run/$JOB_NAME
+PIDFILE=$RUN_DIR/$JOB_NAME.pid
+
 function setup_java_environment() {
   export JAVA_HOME=/var/vcap/packages/openjdk/jdk/
   export PATH=$JAVA_HOME/bin:$PATH
@@ -15,10 +20,6 @@ function setup_mesos_environment() {
 }
 
 function setup_bosh_environment() {
-  JOB_NAME=mesos-slave
-  LOG_DIR=/var/vcap/sys/log/$JOB_NAME
-  RUN_DIR=/var/vcap/sys/run/$JOB_NAME
-  PIDFILE=$RUN_DIR/$JOB_NAME.pid
   mkdir -p $LOG_DIR
   mkdir -p $RUN_DIR
   chown --recursive vcap:vcap $LOG_DIR
@@ -32,13 +33,15 @@ function start_mesos() {
     --master=zk://<%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>/mesos 
     --no-switch_user 
     --hostname=$LIBPROCESS_IP 
+    --executor_registration_timeout=3mins
   )  
+    
+  echo $$ > $PIDFILE
 
   exec chpst -u vcap:vcap $MESOS_HOME/bin/mesos-slave.sh ${flags[*]} \
     1>>$LOG_DIR/$JOB_NAME.stdout.log \
-    2>>$LOG_DIR/$JOB_NAME.stderr.log &
+    2>>$LOG_DIR/$JOB_NAME.stderr.log 
     
-  echo $! > $PIDFILE
 }
 
 function kill_mesos() {
@@ -61,4 +64,3 @@ case $1 in
     ;;
 
 esac
-exit 0
