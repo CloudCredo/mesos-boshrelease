@@ -36,10 +36,19 @@ Apache [Marathon][6] should be available at `http://10.244.1.18:8080`
 4. Add Chronos support
 5. ~~Add Storm support~~ 
 
+## Tests
+
+An Rspec acceptance test pack lives under the `test` directory. To run the tests, deploy the release and then execute Bundler as follows:
+
+```
+bundle install
+bundle exec rspec
+```
+
 ## Disclaimer 
 This is not presently a production ready Apache Mesos release. This is a work in progress. Please raise any issue to chris@cloudcredo.com
 
-The release has been created and tested against [Bosh Lite][5]i with Bosh client version `BOSH 1.2560.0`. 
+The release has been created and tested against [Bosh Lite][5] with Bosh client version `BOSH 1.2560.0`. 
 
 [1]: http://mesos.apache.org
 [2]: https://github.com/cloudfoundry/bosh
