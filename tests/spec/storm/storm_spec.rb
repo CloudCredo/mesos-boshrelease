@@ -1,5 +1,4 @@
-require 'faraday'
-require 'json'
+require 'spec_helper'
 
 describe 'Apache Storm Mesos release' do
   context 'Storm UI is running' do
@@ -12,12 +11,9 @@ describe 'Apache Storm Mesos release' do
   end 
 
   context 'Storm Nimbus is running' do
-    let(:mesos_master_state) { 'http://10.244.1.6:5050/master/state.json' }
 
     it 'is registered with Mesos master' do
-      raw_state = Faraday.get mesos_master_state
-      state_json = JSON.parse(raw_state.body)      
-      storm = state_json.fetch('frameworks').find do |framework|
+      storm = mesos_master_state_json.fetch('frameworks').find do |framework|
          framework.fetch('name') == 'Storm!!!'
       end
 
