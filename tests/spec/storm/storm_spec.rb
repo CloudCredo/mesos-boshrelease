@@ -24,6 +24,11 @@ describe 'Apache Storm Mesos release' do
       expect(storm).not_to be_nil
       expect(storm['name']).to eql('Storm!!!')
     end    
+
+
+   xit 'accepts a tuple' do
+
+   end
   end
 end
 
