@@ -1,3 +1,4 @@
+require 'yaml'
 require 'faraday'
 require 'json'
 require 'pry'

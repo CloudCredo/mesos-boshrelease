@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'yaml'
 
 describe 'Apache Mesos Bosh release' do
 
