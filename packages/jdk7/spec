@@ -1,0 +1,5 @@
+---
+name: jdk7
+dependencies: []
+files:
+  - java/jdk-7u65-linux-x64.tar.gz

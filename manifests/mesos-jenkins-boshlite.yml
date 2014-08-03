@@ -1,6 +1,6 @@
 ---
 name: apache-mesos
-director_uuid: c5f8d0da-f8ac-4918-a1a3-0a846fb97d09
+director_uuid: 8ff3f841-cf47-447c-9bf7-398bdd2c9cbe
 
 releases:
 - name: apache-mesos

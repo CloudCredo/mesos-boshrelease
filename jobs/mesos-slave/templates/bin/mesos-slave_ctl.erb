@@ -9,7 +9,7 @@ RUN_DIR=/var/vcap/sys/run/$JOB_NAME
 PIDFILE=$RUN_DIR/$JOB_NAME.pid
 
 function setup_java_environment() {
-  export JAVA_HOME=/var/vcap/packages/openjdk/jdk/
+  export JAVA_HOME=/var/vcap/packages/jre7
   export PATH=$JAVA_HOME/bin:$PATH
 }
 
@@ -22,7 +22,7 @@ function setup_mesos_environment() {
 function setup_bosh_environment() {
   mkdir -p $LOG_DIR
   mkdir -p $RUN_DIR
-  chown --recursive vcap:vcap $LOG_DIR
+  chown --recursive vcap:vcap $LOG_DIR /var/vcap/store/
 }
 
 function start_mesos() {

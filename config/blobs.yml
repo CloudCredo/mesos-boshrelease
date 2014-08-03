@@ -1,101 +1,85 @@
 ---
 git/git-1.7.11.2.tar.gz:
   object_id: ba9df805-eb9f-415c-9675-78fa4be032a8
-  sha: !binary |-
-    ZjY3YjRmNmMwMjc3MjUwNDExYzY4NzJhZTdiOGE4NzJhZTExZDMxMw==
+  sha: f67b4f6c0277250411c6872ae7b8a872ae11d313
   size: 4015780
 java/jre-1.6.0_24-x86_64.tar.gz:
   object_id: 1fd0744d-045a-4898-8136-e757b7b4d314
-  sha: !binary |-
-    MDUxMWQ4MzNkZmQ5ODI1YTI2YzE4ZTlkNjg1ZGU2NGFjMDE1MWU4NQ==
+  sha: 0511d833dfd9825a26c18e9d685de64ac0151e85
   size: 34453414
 jenkins/jenkins-1.531.war:
   object_id: bfd14b38-958e-4597-a0b9-4a8fae3b78db
-  sha: !binary |-
-    YWY3NjhiMTczNzgwMDQyNWZjZTliZWE1YmZhY2RiMTJmYTE3NWYyMg==
+  sha: af768b1737800425fce9bea5bfacdb12fa175f22
   size: 62953726
 libyaml/yaml-0.1.4.tgz:
   object_id: 2323d3c5-cb9a-49ee-b266-c82858af5c2b
-  sha: !binary |-
-    ZTBlNWUwOTE5MmFiMTBhNjA3ZTNkYTI5NzBkYjQ5MjExOGY1NjBmMg==
+  sha: e0e5e09192ab10a607e3da2970db492118f560f2
   size: 471759
 nginx/nginx-1.4.2.tar.gz:
   object_id: b04a6f17-bebd-4d14-a1fa-e825c767b34f
-  sha: !binary |-
-    OGYwMDZkYzc3Mzg0MGI2NjI0YTEzN2E1ODRmZjg4NTBkNTE1NWUzZg==
+  sha: 8f006dc773840b6624a137a584ff8850d5155e3f
   size: 767688
 nginx/pcre-8.33.tar.gz:
   object_id: 4f729bca-bfab-4a86-9c8e-b525c689b86a
-  sha: !binary |-
-    YmNlYWZiNTM1NTMyMTlkYWQyNTkzYmI4YWYwNmRhNGQwN2ZkMzgyOA==
+  sha: bceafb53553219dad2593bb8af06da4d07fd3828
   size: 1889401
 openjdk/jdk1.6.0_35.tar.gz:
   object_id: 3cc6a06e-574f-4707-b2a9-ecf02a74cd0e
-  sha: !binary |-
-    NDdlYWQ0NWM2NThmOWM3MjU3N2QyMDJkOGFhMTY3NTQ2MWVlM2FkNg==
+  sha: 47ead45c658f9c72577d202d8aa1675461ee3ad6
   size: 67126391
 python/Python-2.7.tgz:
   object_id: 7cc865e8-9135-4178-af81-d4b86101a1ff
-  sha: !binary |-
-    YjAzNzhlMGQxY2E1NmJkZjIyYWM0MmVhMzJhMzIxM2VmMmU0Njk3Zg==
+  sha: b0378e0d1ca56bdf22ac42ea32a3213ef2e4697f
   size: 14026384
 ruby/bundler-1.2.1.gem:
   object_id: ef9af947-377e-43b8-bfa9-46fb53c3d1fc
-  sha: !binary |-
-    MGNiZTZhZDdhNDFmMDY0ZDZjMTFjMTA1ODQ2NWZmZmIxYmQ1ODA2OQ==
+  sha: 0cbe6ad7a41f064d6c11c1058465fffb1bd58069
   size: 226816
 ruby/ruby-1.9.3-p448.tar.gz:
   object_id: 5e8c98a6-9d6f-418f-a0fc-325996626bc0
-  sha: !binary |-
-    YzdmNzM2ZTNiYzFjYTFlNjYxOWE5MTIxODM3ZGQwODQwYWFkNzdjZQ==
+  sha: c7f736e3bc1ca1e6619a9121837dd0840aad77ce
   size: 12559260
 ruby/rubygems-1.8.24.tgz:
   object_id: 7cdb6cfe-6ab1-4340-9582-319ac6210b73
-  sha: !binary |-
-    MzBmMjcwNDdlNzRmNzk0MzExNzczNmEwZDNlMjI0OTk0ZmVlMDkwNQ==
+  sha: 30f27047e74f7943117736a0d3e224994fee0905
   size: 380101
 marathon/marathon-0.4.1-jar-with-dependencies.jar:
   object_id: 3074490f-bfe2-4b70-9157-7a1c01c0f7b5
-  sha: !binary |-
-    Yjg5MjkyYzYzZmEzMzAyZTQ4MTliYTNhYzE2MzRlMjJkYjI2ZmI2Zg==
+  sha: b89292c63fa3302e4819ba3ac1634e22db26fb6f
   size: 48995342
 sasl/cyrus-sasl-2.1.26.tar.gz:
   object_id: 731ef16f-1656-41e3-b8b5-fffd67651fc6
-  sha: !binary |-
-    ZDY2NjlmYjkxNDM0MTkyNTI5YmQxM2VlOTU3MzdhOGE1MDQwMjQxYw==
+  sha: d6669fb91434192529bd13ee95737a8a5040241c
   size: 5220231
 jenkins/mesos.hpi:
   object_id: cc65c3b6-ab35-425c-be8e-e1b665d80c65
-  sha: !binary |-
-    NTQxN2Y0YTNiMjViMDg2MjFjODQ5ZWY0N2QyZWE4Zjc2NWRhYTlmZg==
+  sha: 5417f4a3b25b08621c849ef47d2ea8f765daa9ff
   size: 933903
 maven/apache-maven-3.2.1-bin.tar.gz:
   object_id: 5941a74a-e581-4384-8f4c-0581d6113364
-  sha: !binary |-
-    NDBlMWJmMDc3NWZkM2ViY2FjMWRiZWI2MTE1M2I4NzFiODZiODk0Zg==
+  sha: 40e1bf0775fd3ebcac1dbeb61153b871b86b894f
   size: 6927918
 mesos/mesos-0.18.1.tar.gz:
   object_id: 8d870ed3-00a0-4c79-bf4a-dc73008f0e2d
-  sha: !binary |-
-    Y2Y3M2RhZWMxOTEzMzY1NmYyMjI5ZTVmYWZmZTAzNTVlYWFmYWViOQ==
+  sha: cf73daec19133656f2229e5faffe0355eaafaeb9
   size: 27574745
 marathon/marathon-0.5.0-SNAPSHOT-jar-with-dependencies.jar:
   object_id: 029252e3-384b-4b9f-b733-ca5ea0f1a28d
-  sha: !binary |-
-    NWE4NmMzMWRkZWI2ZGRkNmU3MzA5NjI2MDMyZWQ3YzdkZDJhNDgxNQ==
+  sha: 5a86c31ddeb6ddd6e7309626032ed7c7dd2a4815
   size: 46434703
 java/openjdk-1.7.0_55.tar.gz:
   object_id: c94d74ce-06e4-4d26-a75c-a26c205c8317
-  sha: !binary |-
-    MDc4OGI5MWIzNWJmZGM2MjgxNDMxMDNiMTdkZTMxOTRjMzlhMzA1YQ==
+  sha: 0788b91b35bfdc628143103b17de3194c39a305a
   size: 31534443
 java/openjdk-1.8.0_05.tar.gz:
   object_id: 05c57bce-1ad5-45b8-baa4-6bdd2e4e56a4
-  sha: !binary |-
-    NDAxNjcyNDRkZmIxYTFkY2RiNGQyM2VjYzAxMWM1MDhhOGMzZTdjZg==
+  sha: 40167244dfb1a1dcdb4d23ecc011c508a8c3e7cf
   size: 38622827
 storm/storm-mesos-0.9.tgz:
   object_id: 7a2cc01e-84a9-42fd-afcf-0468bfeb00eb
-  sha: !binary |-
-    NjEwZDA0MDUxNmIzMmM0NDBlODBmNmY0YzY0NzJiMmY4NzRkMTYyZg==
+  sha: 610d040516b32c440e80f6f4c6472b2f874d162f
   size: 18245741
+java/jdk-7u65-linux-x64.tar.gz:
+  object_id: 69343c1f-10a6-41ec-809b-a7baef208aed
+  sha: c6c47b4f85992a322ffaa60e715e06489e201172
+  size: 142384385

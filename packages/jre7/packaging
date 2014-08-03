@@ -3,5 +3,6 @@ set -e
 
 archive="java/openjdk-1.7.0_55.tar.gz"
 echo "Extracting archive..."
-tar xzf $archive
+
+tar xzvf $archive
 cp -a * ${BOSH_INSTALL_TARGET}

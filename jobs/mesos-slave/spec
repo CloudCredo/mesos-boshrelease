@@ -1,7 +1,8 @@
 ---
 name: mesos-slave
 packages:
-- openjdk
+- jre7
+- openjdk 
 - mesos
 - sasl
 templates:

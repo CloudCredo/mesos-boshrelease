@@ -30,6 +30,7 @@ function setup_bosh_environment() {
   mkdir -p $LOG_DIR
   mkdir -p $RUN_DIR
   chown --recursive vcap:vcap $LOG_DIR
+  hostname <%= spec.networks.send(p('mesos.network')).ip %>
 }
 
 function setup_mesos_environment() {
@@ -43,6 +44,14 @@ function setup_mesos_environment() {
 function setup_storm_environment() {
   local config=/var/vcap/jobs/storm/config
   local storm_data=/var/vcap/store/storm/
+  mkdir -p /etc/sv/monit/conf/
+  
+  local user_conf=/etc/sv/monit/conf/storm.yaml
+  if [ ! -f $user_conf ]; then
+    #The other option is to set user.dir to /var/vcap/...(this is a better option) 
+    cp /var/vcap/jobs/storm/config/storm.yaml $(dirname ${user_conf})
+  fi
+
   cp $config/storm.yaml $JOB_DIR/conf
   cp $config/cluster.xml $JOB_DIR/logback
   mkdir -p $storm_data
