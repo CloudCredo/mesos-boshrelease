@@ -13,12 +13,6 @@ function setup_java_environment() {
   export PATH=$PATH:$JAVA_HOME/bin
 }
 
-function setup_python_environment() {
-  export PYTHONHOME=/var/vcap/packages/python27
-  export PYTHONPATH=$PYTHONHOME/Lib
-  chmod --recursive 777 $PYTHONPATH
-} 
-
 function setup_umlimit() {
   ulimit -n 8192
 }
@@ -29,7 +23,11 @@ function setup_bosh_environment() {
 
   mkdir -p $LOG_DIR
   mkdir -p $RUN_DIR
-  chown --recursive vcap:vcap $LOG_DIR
+  chown --recursive vcap:vcap $LOG_DIR 
+
+  chown --recursive vcap:vcap /var/vcap/packages/storm/*
+  chmod --recursive 777 /var/vcap/packages/storm/*
+
   hostname <%= spec.networks.send(p('mesos.network')).ip %>
 }
 
@@ -83,7 +81,6 @@ function kill_process() {
 function set_up() {
   setup_bosh_environment     
   setup_umlimit
-  setup_python_environment
   setup_java_environment
   setup_mesos_environment
   setup_storm_environment
