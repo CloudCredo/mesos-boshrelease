@@ -2,7 +2,6 @@
 name: mesos-master
 packages:
 - openjdk
-- python27
 - mesos 
 - sasl
 templates:
