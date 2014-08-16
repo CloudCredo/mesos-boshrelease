@@ -12,6 +12,8 @@ function setup_mesos_environment() {
   export MESOS_HOME=/var/vcap/packages/mesos/
   HOSTNAME=<%= spec.networks.send(p('mesos.network')).ip %>
   chown --recursive vcap:vcap $MESOS_HOME
+  mkdir -p /var/vcap/store/replicated_log
+  chown --recursive vcap:vcap /var/vcap/store/replicated_log
 }
 
 function setup_bosh_environment() {
@@ -37,6 +39,8 @@ function start_mesos() {
     --ip=<%= p("mesos.master.ip") %> 
     --hostname=$HOSTNAME 
     --zk=zk://<%= p("mesos.zookeeper.ip") %>:<%= p("mesos.zookeeper.port") %>/mesos 
+    --work_dir=/var/vcap/store/
+    --quorum=1
   )  
 
   exec chpst -u vcap:vcap $MESOS_HOME/bin/mesos-master.sh ${flags[*]} \
